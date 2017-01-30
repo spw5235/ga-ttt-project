@@ -1,19 +1,18 @@
 'use strict';
 
-const board = require('../board');
+// const board = require('../board');
 
 let beginPlay;
 
 const signInSuccess = function() {
   console.log('sign in success');
+  $(".player-message").text("You have successfully signed in.  Start playing");
   $(".player-turn").text("Player 1, it's your turn");
-  beginPlay = true;
-  board.playerSummary();
 };
 
 const signUpSuccess = function() {
   $(".player-message").text("You have successfully signed up.  Please login before starting the game");
-  console.log('sign out success');
+  console.log('signup in success');
 };
 
 const signOutSuccess = function() {

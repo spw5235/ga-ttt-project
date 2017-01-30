@@ -15,8 +15,15 @@
 
     </head>
     <body class="container-fluid">
-      <h1> Login</h1>
-      <form id="sign-up">
+
+      <div class="login-button-container">
+        <button class = "login-button" type="button" id="sign-up-b">Sign Up!</button>
+        <button class = "login-button" type="button" id="login-b">Sign in!</button>
+        <button class = "login-button" type="button" id="change-password-b">Change Password</button>
+        <button class = "login-button" type="button" id="sign-out-b">Sign Out</button>
+      </div>
+
+      <form id="sign-up" class="form">
         <fieldset>
           <legend>Sign up!</legend>
           <input type="text" name="credentials[email]" value="" placeholder="email">
@@ -25,7 +32,7 @@
           <input type="submit" name="submit" value="Sign up!">
         </fieldset>
       </form>
-      <form id="sign-in">
+      <form id="sign-in" class="form">
         <fieldset>
           <legend>Sign in!</legend>
           <input type="text" name="credentials[email]" value="" placeholder="email">
@@ -33,13 +40,13 @@
           <input type="submit" name="submit" value="Sign in!">
         </fieldset>
       </form>
-      <form id="sign-out">
+      <form id="sign-out" class="form">
         <fieldset>
           <legend>Sign out!</legend>
           <input type="submit" name="submit" value="Sign out!">
         </fieldset>
       </form>
-      <form id="change-password">
+      <form id="change-password" class="form">
         <fieldset>
           <legend>Change Password</legend>
           <input type="text" name="credentials[email]" value="" placeholder="email">
@@ -49,9 +56,11 @@
         </fieldset>
       </form>
 
+      <h1>Tic-Tac-Toe</h1>
+      <h3>"The lamest game on earth"</h3>
       <div class="game-play">
         <div class="player-message"></div>
-        <div class="player-turn">Player 1, it's your turn</div>
+        <div class="player-turn">Please sign-up or sign-in to start playing</div>
         <div class="score"></div>
         <div class = "game-board-container">
             <div class="0cell game-box" id="0"></div>
@@ -70,12 +79,16 @@
               <button id="reset-game">Reset Board</button>
           </div> -->
             <div id="new-game" class="new-game-container">
-              <button type="button">New Game</button>
+              <button type="button" id="new-game-b">New Game</button>
             </div>
-            <div id="get-games" class="get-game-container">
-              <button type="button">Get Games</button>
+            <div class="steps">
+              <ol>
+                <li>Step 1: Sign-Up or Sign-In</li>
+                <li>Step 2: Sign-In</li>
+                <li>Step 3: Click New Game</li>
+                <li>Step 4: Play</li>
+              </ol>
             </div>
-
       </div>
     </body>
 </html>

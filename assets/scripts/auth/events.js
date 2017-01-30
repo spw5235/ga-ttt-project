@@ -49,6 +49,14 @@ const onChangePassword = function(event){
 };
 
 
+
+// $("#reset-game").on( "click", function() {
+//   console.log('reset completed');
+//   clearBoard();
+//   $(".game-box").text('');
+// });
+
+
 let currPlayer;
 let gameBoard = ["", "", "", "", "", "", "", "", ""];
 let tempSymbol;
@@ -87,14 +95,14 @@ const onGetGame = function(event) {
 let isGameOver = false;
 
 const onGameInitiated = function(event) {
-    if ((ui.beginPlay === true) && (isGameOver !== true)) {
-      console.log('you are logged in, please continue');
-    } else if ((ui.beginPlay === true) && (isGameOver === true)) {
-      return;
-    } else {
-      $(".player-turn").text("Error: You must sign up and login before playing");
-      return;
-    }
+    // if ((ui.beginPlay === true) && (isGameOver !== true)) {
+    //   console.log('you are logged in, please continue');
+    // } else if ((ui.beginPlay === true) && (isGameOver === true)) {
+    //   return;
+    // } else {
+    //   $(".player-turn").text("Error: You must sign up and login before playing");
+    //   return;
+    // }
 
     event.preventDefault();
     const playerX = 'X';
@@ -132,21 +140,26 @@ const onGameInitiated = function(event) {
         // board.changePlayer(currPlayer, playerX, playerO);
         $(".player-turn").text("Player " + currPlayNum + ", it's your turn");
       }
+      console.log(eventTargetId);
+      console.log(currPlayer);
+      console.log(isGameOver);
+
+
       api.updatingBoard(eventTargetId, currPlayer, isGameOver)
         .done(ui.updateBoardSucces)
         .fail(ui.updateBoardFailed);
-      api.getCurrentGame()
-      .then((response) => {
-        store.displayGameId = response.game.id;
-        store.displayCells = response.game.cells;
-        store.displayOver = response.game.over;
-        $('.score').text(store.displayCells);
-        console.log(store.displayGameId);
-        console.log(store.displayCells);
-        console.log(store.displayOver);
-      })
-      .done(ui.updateBoardSucces)
-      .fail(ui.updateBoardFailed);
+      // api.getCurrentGame()
+      // .then((response) => {
+      //   store.displayGameId = response.game.id;
+      //   store.displayCells = response.game.cells;
+      //   store.displayOver = response.game.over;
+      //   $('.score').text(store.displayCells);
+      //   console.log(store.displayGameId);
+      //   console.log(store.displayCells);
+      //   console.log(store.displayOver);
+      // })
+      // .done(ui.updateBoardSucces)
+      // .fail(ui.updateBoardFailed);
     } else {
         $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
       }
@@ -158,13 +171,15 @@ const onGameInitiated = function(event) {
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#new-game').on('click', onNewGame);
+
   $('#sign-in').on('submit', onSignIn);
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
-  $('#get-games').on('click', onGetGame);
+
   $('.game-board-container div').on('click', onGameInitiated);
 };
 
 module.exports = {
   addHandlers,
+  onGetGame,
 };

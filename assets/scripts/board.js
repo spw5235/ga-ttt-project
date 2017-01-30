@@ -1,14 +1,24 @@
 'use strict';
 
-const store = require('./store');
+// const store = require('./store');
+// const api = require('./auth/api');
+// const ui = require('./auth/ui');
 
-const playerSummary = function () {
-  if (store.user) {
-    console.log('true');
-  } else {
-    console.log('false');
-  }
-};
+// const playerSummary = function () {
+//   if (store.user) {
+//     if (store.user) {
+//       api.getGame()
+//         .then((response) => {
+//           store.gameSummary = response.game.id;
+//           return store.gameSummary;
+//         })
+//         .done(console.log(store.gameSummary))
+//         .fail(ui.fail);
+//     }
+//   } else {
+//     console.log('false');
+//   }
+// };
 
 // Message for who's turn it is
 const nextPlayerFunc = function(currPlayer, playerX, playerO) {
@@ -173,6 +183,44 @@ const removeText = function(div) {
 	$(textDiv).text("");
 };
 
+////CSS Related jQuery
+
+const showLogin = function() {
+  $('#sign-in').toggle();
+  $('#sign-up').hide();
+  $('#sign-out').hide();
+  $('#change-password').hide();
+};
+
+const showSignUp = function() {
+  $('#sign-in').hide();
+  $('#sign-up').toggle();
+  $('#sign-out').hide();
+  $('#change-password').hide();
+};
+
+const showChangePassword = function() {
+  $('#sign-in').hide();
+  $('#sign-up').hide();
+  $('#sign-out').hide();
+  $('#change-password').toggle();
+};
+
+const showSignOut = function() {
+  $('#sign-in').hide();
+  $('#sign-up').hide();
+  $('#sign-out').toggle();
+  $('#change-password').hide();
+};
+
+$('#login-b').on('click', showLogin);
+$('#sign-up-b').on('click', showSignUp);
+$('#change-password-b').on('click', showChangePassword);
+$('#sign-up-b').on('sign-out-b', showSignOut);
+
+
+
+
 
 
 /////////// End Revised Function//////////////
@@ -246,5 +294,5 @@ module.exports = {
   currPlayerTurn,
   nextPlayerFunc,
   currentPlayerVal,
-  playerSummary,
+  // playerSummary,
   };
