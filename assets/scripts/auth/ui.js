@@ -5,14 +5,12 @@
 let beginPlay;
 
 const signInSuccess = function() {
-  console.log('sign in success');
   $('#new-game-dummy').remove();
   $('#new-game').show();
   $('#game-board-container').show();
-
-
+  $('.player-message').text('');
   $(".temp-login-message").text("You have successfully signed in. Start playing");
-  $(".player-turn").text("Player 1, it's your turn");
+  $(".player-turn").text("");
 };
 
 const signUpSuccess = function() {
@@ -22,7 +20,14 @@ const signUpSuccess = function() {
 
 const signOutSuccess = function() {
   $(".player-message").text("Alert: You have successfully signed out.");
+  $('.player-message').css('color', 'red');
+  $('.temp-login-message').text('');
+  $('.player-turn').text('');
   beginPlay = false;
+};
+
+const signOutFailure = function() {
+  console.log('false to sign out');
 };
 
 const getGameSuccess = function() {
@@ -54,6 +59,15 @@ const failure = (error) => {
   console.error(error);
 };
 
+const onNewGameSuccess = function() {
+  $('.temp-login-message').text('');
+  $(".player-turn").text("");
+};
+
+const onNewGameFail = function() {
+  console.log('onnewgamefail');
+};
+
 module.exports = {
   failure,
   success,
@@ -66,4 +80,7 @@ module.exports = {
   updateBoardFailed,
   beginPlay,
   signUpSuccess,
+  signOutFailure,
+  onNewGameFail,
+  onNewGameSuccess,
 };

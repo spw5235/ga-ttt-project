@@ -20,13 +20,14 @@ const signIn = function(data){
   });
 };
 
-const signOut = function(){
+const signOut = function(data){
   return $.ajax({
     method: 'DELETE',
     url: config.apiOrigin + '/sign-out/' + store.user.id,
     headers: {
       Authorization: 'Token token=' + store.user.token,
     },
+    data,
   });
 };
 
@@ -94,10 +95,10 @@ const updatingBoard = function (i, v, o) {
 module.exports = {
   signUp,
   signIn,
-  signOut,
   changePassword,
   newGame,
   getGame,
   updatingBoard,
   getCurrentGame,
+  signOut,
 };

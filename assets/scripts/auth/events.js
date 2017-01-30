@@ -84,6 +84,8 @@ const onSignIn = function (event) {
     })
     .then(ui.signInSuccess)
     .catch(ui.failure);
+    $('#sign-in').slideUp();
+    $('.temp-login-message').css('color', 'green');
 };
 
 const onSignOut = function(event){
@@ -91,7 +93,7 @@ const onSignOut = function(event){
   let data = getFormFields(event.target);
   api.signOut(data)
   .done(ui.signOutSuccess)
-  .fail(ui.fail);
+  .fail(ui.signOutFailure);
 };
 
 const onChangePassword = function(event){
@@ -130,8 +132,8 @@ const onNewGame = function(event) {
         store.curGameId = response.game.id;
         return store.curGameId;
       })
-      .done(ui.success)
-      .fail(ui.fail);
+      .done(ui.onNewGameSuccess)
+      .fail(ui.onNewGameFail);
   }
   isGameOver = false;
 };
@@ -226,10 +228,11 @@ const onGameInitiated = function(event) {
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
+  $('#sign-out').on('submit', onSignOut);
   $('#new-game').on('click', onNewGame);
+  $('#sign-out-b').on('click', onSignOut);
 
   $('#sign-in').on('submit', onSignIn);
-  $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
 
   $('.game-board-container div').on('click', onGameInitiated);
