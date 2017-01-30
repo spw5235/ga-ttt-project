@@ -1,2 +1,154 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+#sign-up, #sign-in, #sign-out, #change-password {
+  display: none;
+}
+
+body {
+  margin-bottom:200px;
+  color: #999999;
+  background:#fff;
+  font-size: 14px;
+}
+
+.form button {
+  color: white;
+  background-color:orange;
+}
+
+.login-button-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.login-button {
+  margin: 0 auto;
+  text-align: center;
+  width: 150px;
+  background: #0099ff;
+  background-image: -webkit-linear-gradient(top, #0099ff, #315e7a);
+  background-image: -moz-linear-gradient(top, #0099ff, #315e7a);
+  background-image: -ms-linear-gradient(top, #0099ff, #315e7a);
+  background-image: -o-linear-gradient(top, #0099ff, #315e7a);
+  background-image: linear-gradient(to bottom, #0099ff, #315e7a);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  text-shadow: 1px 0px 0px #471247;
+  font-family: Arial;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.login-button:hover {
+  margin: 0 auto;
+  text-align: center;
+  width: 150px;
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+#new-game-b {
+  max-width:150px;
+  font-size: 16px;
+  background: #0099ff;
+  color: #ffffff;
+  background-image: -webkit-linear-gradient(top, #0099ff, #315e7a);
+  background-image: -moz-linear-gradient(top, #0099ff, #315e7a);
+  background-image: -ms-linear-gradient(top, #0099ff, #315e7a);
+  background-image: -o-linear-gradient(top, #0099ff, #315e7a);
+  background-image: linear-gradient(to bottom, #0099ff, #315e7a);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  text-shadow: 1px 0px 0px #471247;
+  font-family: Arial;
+}
+
+.form {
+  margin-top: 30px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+}
+
+h1 {
+  font-size:25px;
+  text-align: center;
+  color: orange;
+}
+
+h3 {
+  font-size:20px;
+  text-align: center;
+  color: red;
+  text-decoration: underline;
+}
+
+.game-play {
+  margin: 50px;
+}
+
+.game-box {
+  float: left;
+  border: 1px solid #0099ff ;
+  text-align: center ;
+  height: 100px ;
+  width:33%;
+  font-size: 25px;
+  vertical-align: middle;
+  color:orange;
+  padding-top:15px;
+}
+
+.game-box:nth-child(3n+1){
+  clear:both;
+}
+
+.player-turn, .player-message, .score {
+  margin: 10px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.steps {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.steps li {
+  margin-right: 100px;
+  color: orange;
+}
+// #gameBoard {
+//   margin: 100px 0 ;
+//   border: 1px solid green ;
+//   width: 100% ;
+//
+//
+// #gameBoard td {
+//   border: 1px solid red ;
+//   width: 33% ;
+//   margin:5% ;
+//   text-align: center ;
+//   height: 100px ;
+// }
+//
+// #spacer {
+//   padding-top: 300px ;
+// }
+//
+// .gameBoardContainer {
+//   float: left;
+//   border: 1px solid red ;
+//   width: 33% ;
+//   margin:5% ;
+//   text-align: center ;
+//   height: 100px ;
+// }
