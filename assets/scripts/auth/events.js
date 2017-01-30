@@ -9,20 +9,21 @@ const store = require('../store');
 const board = require('../board');
 let isGameOver = false;
 
-
+$('#sign-up').hide();
 // let currentGameId;
 // console.log(currentGameId);
 
 const onDisplayLastOver = function() {
+  console.log("onShowLastGame");
   api.getGame()
     .then((response) => {
-      let arrLength = response.games.length;
-      let corArrLength = arrLength - 1;
-      let newVal = response.games[corArrLength].over;
+      let arrLength = (response.games.length) - 2;
+      let newVal = response.games[arrLength];
+      console.log(newVal);
       store.lastGameOver = newVal;
-
   });
   if (store.lastGameOver === false || store.lastGameOver) {
+
     console.log('store condition');
     $(".score").text("Status of last game last game: Unfinished");
   } else {
@@ -30,29 +31,29 @@ const onDisplayLastOver = function() {
   }
 };
 
-const onShowLastGame = function() {
-  // if (store.user) {
-    api.getGame()
-      .then((response) => {
-        for (let i = 0; i < response.games.length; i++) {
-          let gameHistory = [];
-          gameHistory.push(response.games[i]);
-          store.gameHist = gameHistory;
-          console.log(store.gameHist);
-          return store.gameHist;
-        }
-        for (let j = 0; j < store.gameHistory.length; j++) {
-          let temp = [];
-          temp.push(store.gameHistory[j]);
-          store.temp = temp;
-          console.log(store.temp);
-          return store.temp;
-        }
-      })
-      .then(ui.getGameSuccess)
-      .catch(ui.getGameFailure);
-    // }
-};
+// const onShowLastGame = function() {
+//   // if (store.user) {
+//     api.getGame()
+//       .then((response) => {
+//         for (let i = 0; i < response.games.length; i++) {
+//           let gameHistory = [];
+//           gameHistory.push(response.games[i]);
+//           store.gameHist = gameHistory;
+//           console.log(store.gameHist);
+//           return store.gameHist;
+//         }
+//         for (let j = 0; j < store.gameHistory.length; j++) {
+//           let temp = [];
+//           temp.push(store.gameHistory[j]);
+//           store.temp = temp;
+//           console.log(store.temp);
+//           return store.temp;
+//         }
+//       })
+//       .then(ui.getGameSuccess)
+//       .catch(ui.getGameFailure);
+//     // }
+// };
 
 // const printArray = function() {
 //   onShowLastGame();
@@ -241,5 +242,5 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   onGetGame,
-  onShowLastGame,
+  // onShowLastGame,
 };
