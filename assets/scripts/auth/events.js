@@ -1,3 +1,5 @@
+'use strict';
+
 //My Work
 
 // const getFormFields = require(`../../../lib/get-form-fields`);
