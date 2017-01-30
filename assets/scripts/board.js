@@ -106,10 +106,12 @@ const isBoardFilled = function(arr) {
 //Arrays Equal to test for isWinner Function
 function arraysEqual(arr1, arr2) {
   if (arr1.length !== arr2.length) {
+
     return false;
   }
   for (let i = arr1.length; i--;) {
     if (arr1[i] !== arr2[i]) {
+
       return false;
     }
   }
@@ -213,6 +215,12 @@ const showSignOut = function() {
   $('#change-password').hide();
 };
 
+const newGameDummyButton = function() {
+  $('.player-turn').text('');
+  $('.player-message').text('Alert: Before Starting the Game, you must sign-up and sign-in to your account');
+}
+
+$('#new-game-dummy').on('click', newGameDummyButton);
 $('#login-b').on('click', showLogin);
 $('#sign-up-b').on('click', showSignUp);
 $('#change-password-b').on('click', showChangePassword);

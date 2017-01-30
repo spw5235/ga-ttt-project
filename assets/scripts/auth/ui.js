@@ -8,17 +8,18 @@ const signInSuccess = function() {
   console.log('sign in success');
   $('#new-game-dummy').remove();
   $('#game-board-container').show();
-  $(".player-message").text("You have successfully signed in.  Start playing");
+
+  $(".temp-login-message").text("You have successfully signed in. Start playing");
   $(".player-turn").text("Player 1, it's your turn");
 };
 
 const signUpSuccess = function() {
-  $(".player-message").text("You have successfully signed up.  Please login before starting the game");
+  $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
   console.log('signup in success');
 };
 
 const signOutSuccess = function() {
-  console.log('sign out success');
+  $(".player-message").text("Alert: You have successfully signed out.");
   beginPlay = false;
 };
 

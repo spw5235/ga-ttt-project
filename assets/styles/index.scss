@@ -9,8 +9,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: none;
 }
 
-
-
 body {
   margin-bottom:200px;
   color: #999999;
@@ -28,12 +26,11 @@ body {
 }
 
 
-#new-game-b {
+#new-game-b, #new-game-b-dummy {
   margin: 15px auto;
   text-align: center;
   width: 150px;
 }
-
 
 .form button {
   color: white;
@@ -77,7 +74,7 @@ body {
   text-decoration: none;
 }
 
-#new-game-b {
+#new-game-b, #new-game-b-dummy {
   max-width:150px;
   font-size: 16px;
   background: #0099ff;
@@ -134,10 +131,16 @@ h3 {
   clear:both;
 }
 
-.player-turn, .player-message, .score {
+.player-turn, .player-message, .score, .temp-login-message {
   margin: 10px;
-  font-size: 22px;
+  color: orange;
   text-align: center;
+  font-size: 16px;
+}
+
+.player-message, .temp-login-message {
+  color: red;
+  text-decoration: underline;
 }
 
 .steps {

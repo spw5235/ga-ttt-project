@@ -102,14 +102,6 @@ const onGameInitiated = function(event) {
   } else {
     return;
   }
-    // if ((ui.beginPlay === true) && (isGameOver !== true)) {
-    //   console.log('you are logged in, please continue');
-    // } else if ((ui.beginPlay === true) && (isGameOver === true)) {
-    //   return;
-    // } else {
-    //   $(".player-turn").text("Error: You must sign up and login before playing");
-    //   return;
-    // }
 
     event.preventDefault();
     const playerX = 'X';
