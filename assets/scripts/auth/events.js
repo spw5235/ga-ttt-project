@@ -7,10 +7,28 @@ const ui = require('./ui');
 const getFormFields = require('../../../lib/get-form-fields');
 const store = require('../store');
 const board = require('../board');
+let isGameOver = false;
+
 
 // let currentGameId;
 // console.log(currentGameId);
 
+const onDisplayLastOver = function() {
+  api.getGame()
+    .then((response) => {
+      let arrLength = response.games.length;
+      let corArrLength = arrLength - 1;
+      let newVal = response.games[corArrLength].over;
+      store.lastGameOver = newVal;
+
+  });
+  if (store.lastGameOver === false || store.lastGameOver) {
+    console.log('store condition');
+    $(".score").text("Status of last game last game: Unfinished");
+  } else {
+    $(".score").text("Status of last game last game: Completed");
+  }
+};
 
 const onShowLastGame = function() {
   // if (store.user) {
@@ -36,17 +54,17 @@ const onShowLastGame = function() {
     // }
 };
 
-const printArray = function() {
-  onShowLastGame();
-  for (let j = 0; j < store.gameHistory.length; j++) {
-    let temp = [];
-    temp.push(store.gameHistory[j]);
-    store.temp = temp;
-    console.log(store.temp);
-    return store.temp;
-  }
-  console.log(store.temp);
-};
+// const printArray = function() {
+//   onShowLastGame();
+//   for (let j = 0; j < store.gameHistory.length; j++) {
+//     let temp = [];
+//     temp.push(store.gameHistory[j]);
+//     store.temp = temp;
+//     console.log(store.temp);
+//     return store.temp;
+//   }
+//   console.log(store.temp);
+// };
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -115,6 +133,7 @@ const onNewGame = function(event) {
       .done(ui.success)
       .fail(ui.fail);
   }
+  isGameOver = false;
 };
 
 const onGetGame = function(event) {
@@ -130,7 +149,7 @@ const onGetGame = function(event) {
     // }
 };
 
-let isGameOver = false;
+
 
 const onGameInitiated = function(event) {
   if (isGameOver !== true) {
@@ -175,15 +194,14 @@ const onGameInitiated = function(event) {
         // board.changePlayer(currPlayer, playerX, playerO);
         $(".player-turn").text("Player " + currPlayNum + ", it's your turn");
       }
-      console.log(eventTargetId);
-      console.log(currPlayer);
-      console.log(isGameOver);
 
 
       api.updatingBoard(eventTargetId, currPlayer, isGameOver)
         .done(ui.updateBoardSucces)
         .fail(ui.updateBoardFailed);
-      onShowLastGame();
+      onDisplayLastOver();
+
+      // onShowLastGame();
       // let test = onShowLastGame();
       // console.log(test[0][0]);
       // api.getCurrentGame()
@@ -205,8 +223,6 @@ const onGameInitiated = function(event) {
       // let showGame = api.getGame();
       // console.log(showGame);
   };
-
-console.log()
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
