@@ -1,11 +1,29 @@
 'use strict';
 
+const store = require('./store');
+
+const playerSummary = function () {
+  if (store.user) {
+    console.log('true');
+  } else {
+    console.log('false');
+  }
+};
+
 // Message for who's turn it is
 const nextPlayerFunc = function(currPlayer, playerX, playerO) {
   if (currPlayer === playerX) {
     return playerO;
   } else {
     return playerX;
+  }
+};
+
+const currentPlayerVal = function(currPlayer, playerX) {
+  if ( currPlayer === playerX) {
+    return 1;
+  } else {
+    return 2;
   }
 };
 
@@ -156,6 +174,62 @@ const removeText = function(div) {
 };
 
 
+
+/////////// End Revised Function//////////////
+
+
+///////////////////My Old Work///////////////////////
+
+// $(".game-board-container div").on( "click", function() {
+//     //select clack of clicked
+//     // let testclass = $(".0cell").data("box-num");
+//     // let testclassText = testclass.attr()
+//     // let testattr = $( this ).data("box-num");
+//     // console.log(testattr);
+//     //
+//     // const divClass = $( this ).attr("id");
+//     //
+//     // //convert string to num
+//     // const divClassNum = parseInt(divClass);
+//     //
+//     // const validMove = recordMove(divClassNum);
+//
+//     //checks if cell is empty - if not, text.Error
+//     if (validMove) {
+//       //clear preivous error messages
+//       // $(".player-message").text("");
+//       //determines symbol to display on page and pushes to array
+//       // symbolValue(currPlayer, divClassNum);
+//       // let divClassNumStore = divClassNum;
+//       //display symbol on page
+//       // $( this ).text( tempSymbol );
+//       //test if game over - i.e. tie or win
+//       if (gameOver(gameBoard)) {
+//         //if tie, remove warning text, alert tie
+//         if (isBoardFilled(gameBoard)) {
+//           $(".player-turn").text("");
+//           $(".player-message").text("The game has ended in a draw");
+//         } else if (isWinner(gameBoard)) {
+//           $(".player-turn").text("");
+//           $(".player-message").text("Player " + currPlayer + " has won the game");
+//         }
+//       } else {
+//         changePlayer();
+//         currentPlayTurn = messageText(currPlayer);
+//         $(".player-turn").text(currentPlayTurn);
+//       }
+//     } else {
+//       $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
+//     }
+//   });
+
+//
+// $("#reset-game").on( "click", function() {
+//   console.log('reset completed');
+//   clearBoard();
+//   $(".game-box").text('');
+// });
+
 module.exports = {
   // tempSymbol,
   isWinner,
@@ -171,4 +245,6 @@ module.exports = {
   arraysEqual,
   currPlayerTurn,
   nextPlayerFunc,
+  currentPlayerVal,
+  playerSummary,
   };

@@ -1,12 +1,24 @@
 'use strict';
 
+const board = require('../board');
+
+let beginPlay;
 
 const signInSuccess = function() {
   console.log('sign in success');
+  $(".player-turn").text("Player 1, it's your turn");
+  beginPlay = true;
+  board.playerSummary();
+};
+
+const signUpSuccess = function() {
+  $(".player-message").text("You have successfully signed up.  Please login before starting the game");
+  console.log('sign out success');
 };
 
 const signOutSuccess = function() {
   console.log('sign out success');
+  beginPlay = false;
 };
 
 const getGameSuccess = function() {
@@ -48,4 +60,6 @@ module.exports = {
   getGameFailure,
   updateBoardSucces,
   updateBoardFailed,
+  beginPlay,
+  signUpSuccess,
 };

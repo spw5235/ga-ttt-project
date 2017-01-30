@@ -1,11 +1,6 @@
 'use strict';
 
-// const getFormFields = require(`../../../lib/get-form-fields`);
-//
-// const api = require('./api');
-// const ui = require('./ui');
-// const game = require('../game');
-// const store = require('../store');
+//My Work
 
 const api = require('./api');
 const ui = require('./ui');
@@ -20,7 +15,7 @@ const onSignUp = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
   api.signUp(data)
-    .then(ui.success)
+    .then(ui.signUpSuccess)
     .catch(ui.failure);
 };
 
@@ -32,7 +27,7 @@ const onSignIn = function (event) {
       store.user = response.user;
       return store.user;
     })
-    .then(ui.success)
+    .then(ui.signInSuccess)
     .catch(ui.failure);
 
 };
@@ -53,13 +48,23 @@ const onChangePassword = function(event){
   .fail(ui.fail);
 };
 
+
+let currPlayer;
+let gameBoard = ["", "", "", "", "", "", "", "", ""];
+let tempSymbol;
+let nextPlayer;
+let currPlayNum;
+
+
 const onNewGame = function(event) {
   event.preventDefault();
+  gameBoard = ["", "", "", "", "", "", "", "", ""];
+  $('.game-board-container').children().text('');
   if (store.user) {
     api.newGame()
       .then((response) => {
         store.curGameId = response.game.id;
-        console.log(store.curGameId);
+        return store.curGameId;
       })
       .done(ui.success)
       .fail(ui.fail);
@@ -79,17 +84,24 @@ const onGetGame = function(event) {
     // }
 };
 
-let currPlayer;
-let gameBoard = ["", "", "", "", "", "", "", "", ""];
-let tempSymbol;
-let nextPlayer;
+let isGameOver = false;
 
 const onGameInitiated = function(event) {
+    if ((ui.beginPlay === true) && (isGameOver !== true)) {
+      console.log('you are logged in, please continue');
+    } else if ((ui.beginPlay === true) && (isGameOver === true)) {
+      return;
+    } else {
+      $(".player-turn").text("Error: You must sign up and login before playing");
+      return;
+    }
+
     event.preventDefault();
     const playerX = 'X';
     const playerO = 'O';
     currPlayer = board.currPlayerTurn(gameBoard, playerX ,playerO);
-    let isGameOver = false;
+    currPlayNum = board.currentPlayerVal(currPlayer, playerX);
+
     const eventTargetId = event.target.id;
     const divClassNum = parseInt(eventTargetId);
     const validMove = board.recordMove(divClassNum, gameBoard);
@@ -99,30 +111,42 @@ const onGameInitiated = function(event) {
       $(".player-message").text("");
       board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
 
+      // game.game.cell.index = board.divClassNum;
+      // game.game.cell.value = board.currPlayer;
       //determines symbol to display on page and pushes to array
       //display symbol on page
       $( event.target).text( currPlayer );
 
         if (board.gameOver(gameBoard)) {
-          if (board.isBoardFilled(gameBoard)) {
+          if (board.isWinner(gameBoard)) {
+            $(".player-turn").text("");
+            $(".player-message").text("Player " + currPlayNum + " has won the game");
+          } else if (board.isBoardFilled(gameBoard)) {
             $(".player-turn").text("");
             $(".player-message").text("The game has ended in a draw");
-          } else if (board.isWinner(gameBoard)) {
-            $(".player-turn").text("");
-            $(".player-message").text("Player " + currPlayer + " has won the game");
           }
           isGameOver = true;
       }
       else {
         nextPlayer = board.nextPlayerFunc(currPlayer, playerX, playerO);
         // board.changePlayer(currPlayer, playerX, playerO);
-        $(".player-turn").text("Player " + nextPlayer + ", it's your turn");
+        $(".player-turn").text("Player " + currPlayNum + ", it's your turn");
       }
       api.updatingBoard(eventTargetId, currPlayer, isGameOver)
         .done(ui.updateBoardSucces)
         .fail(ui.updateBoardFailed);
-      let showResults = api.getGame();
-      console.log(showResults)
+      api.getCurrentGame()
+      .then((response) => {
+        store.displayGameId = response.game.id;
+        store.displayCells = response.game.cells;
+        store.displayOver = response.game.over;
+        $('.score').text(store.displayCells);
+        console.log(store.displayGameId);
+        console.log(store.displayCells);
+        console.log(store.displayOver);
+      })
+      .done(ui.updateBoardSucces)
+      .fail(ui.updateBoardFailed);
     } else {
         $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
       }

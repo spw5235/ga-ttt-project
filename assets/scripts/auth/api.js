@@ -61,7 +61,18 @@ const getGame = function () {
   });
 };
 
+const getCurrentGame = function () {
+  return $.ajax ({
+    url: config.apiOrigin + '/games/' + store.curGameId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+    },
+  });
+};
+
 const updatingBoard = function (i, v, o) {
+
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.curGameId,
     method: 'PATCH',
@@ -88,5 +99,5 @@ module.exports = {
   newGame,
   getGame,
   updatingBoard,
-  // updateCurrentGame,
+  getCurrentGame,
 };
