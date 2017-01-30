@@ -7,7 +7,9 @@ let beginPlay;
 const signInSuccess = function() {
   console.log('sign in success');
   $('#new-game-dummy').remove();
+  $('#new-game').show();
   $('#game-board-container').show();
+
 
   $(".temp-login-message").text("You have successfully signed in. Start playing");
   $(".player-turn").text("Player 1, it's your turn");

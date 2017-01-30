@@ -146,10 +146,21 @@ h3 {
 .steps {
   font-size: 16px;
   margin-top: 20px;
+  text-align: left;
+}
+
+.steps h3 {
+  text-align: left;
+}
+
+.steps ul {
+  left:50%;
 }
 
 .steps li {
-  margin-right: 100px;
+  float: left;
+  position: relative;
+  margin-right: 300px;
   color: orange;
 }
 // #gameBoard {

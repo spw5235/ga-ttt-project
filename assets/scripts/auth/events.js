@@ -11,6 +11,43 @@ const board = require('../board');
 // let currentGameId;
 // console.log(currentGameId);
 
+
+const onShowLastGame = function() {
+  // if (store.user) {
+    api.getGame()
+      .then((response) => {
+        for (let i = 0; i < response.games.length; i++) {
+          let gameHistory = [];
+          gameHistory.push(response.games[i]);
+          store.gameHist = gameHistory;
+          console.log(store.gameHist);
+          return store.gameHist;
+        }
+        for (let j = 0; j < store.gameHistory.length; j++) {
+          let temp = [];
+          temp.push(store.gameHistory[j]);
+          store.temp = temp;
+          console.log(store.temp);
+          return store.temp;
+        }
+      })
+      .then(ui.getGameSuccess)
+      .catch(ui.getGameFailure);
+    // }
+};
+
+const printArray = function() {
+  onShowLastGame();
+  for (let j = 0; j < store.gameHistory.length; j++) {
+    let temp = [];
+    temp.push(store.gameHistory[j]);
+    store.temp = temp;
+    console.log(store.temp);
+    return store.temp;
+  }
+  console.log(store.temp);
+};
+
 const onSignUp = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
@@ -29,7 +66,6 @@ const onSignIn = function (event) {
     })
     .then(ui.signInSuccess)
     .catch(ui.failure);
-
 };
 
 const onSignOut = function(event){
@@ -147,6 +183,9 @@ const onGameInitiated = function(event) {
       api.updatingBoard(eventTargetId, currPlayer, isGameOver)
         .done(ui.updateBoardSucces)
         .fail(ui.updateBoardFailed);
+      onShowLastGame();
+      // let test = onShowLastGame();
+      // console.log(test[0][0]);
       // api.getCurrentGame()
       // .then((response) => {
       //   store.displayGameId = response.game.id;
@@ -167,6 +206,8 @@ const onGameInitiated = function(event) {
       // console.log(showGame);
   };
 
+console.log()
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#new-game').on('click', onNewGame);
@@ -181,4 +222,5 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   onGetGame,
+  onShowLastGame,
 };
