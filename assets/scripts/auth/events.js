@@ -1,7 +1,5 @@
 'use strict';
 
-//My Work
-
 // const getFormFields = require(`../../../lib/get-form-fields`);
 //
 // const api = require('./api');
@@ -57,10 +55,15 @@ const onChangePassword = function(event){
 
 const onNewGame = function(event) {
   event.preventDefault();
-  let data = getFormFields(event.target);
-  api.newGame(data)
-    .done(ui.success)
-    .fail(ui.fail);
+  if (store.user) {
+    api.newGame()
+      .then((response) => {
+        store.curGameId = response.game.id;
+        console.log(store.curGameId);
+      })
+      .done(ui.success)
+      .fail(ui.fail);
+  }
 };
 
 const onGetGame = function(event) {
@@ -81,28 +84,21 @@ let gameBoard = ["", "", "", "", "", "", "", "", ""];
 let tempSymbol;
 let nextPlayer;
 
-const gameInitiated = function(event) {
+const onGameInitiated = function(event) {
+    event.preventDefault();
     const playerX = 'X';
     const playerO = 'O';
     currPlayer = board.currPlayerTurn(gameBoard, playerX ,playerO);
-    event.preventDefault();
-    // const playerX = 'x';
-    // const playerO = 'o';
-    // let currPlayer = playerX;
-    // let gameBoard = ["", "", "", "", "", "", "", "", ""];
-    // let tempSymbol;
-    // let currentPlayTurn;
-
-    const divClassNum = parseInt(event.target.id);
+    let isGameOver = false;
+    const eventTargetId = event.target.id;
+    const divClassNum = parseInt(eventTargetId);
     const validMove = board.recordMove(divClassNum, gameBoard);
 
     if (validMove) {
       //clear preivous error messages
       $(".player-message").text("");
-      const displayVal = board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
+      board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
 
-      // game.game.cell.index = board.divClassNum;
-      // game.game.cell.value = board.currPlayer;
       //determines symbol to display on page and pushes to array
       //display symbol on page
       $( event.target).text( currPlayer );
@@ -115,45 +111,34 @@ const gameInitiated = function(event) {
             $(".player-turn").text("");
             $(".player-message").text("Player " + currPlayer + " has won the game");
           }
+          isGameOver = true;
       }
       else {
         nextPlayer = board.nextPlayerFunc(currPlayer, playerX, playerO);
-        console.log(nextPlayer);
         // board.changePlayer(currPlayer, playerX, playerO);
         $(".player-turn").text("Player " + nextPlayer + ", it's your turn");
       }
+      api.updatingBoard(eventTargetId, currPlayer, isGameOver)
+        .done(ui.updateBoardSucces)
+        .fail(ui.updateBoardFailed);
+      let showResults = api.getGame();
+      console.log(showResults)
     } else {
         $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
       }
-    // api.updateBoard(game);
+      // console.log('getting board');
+      // let showGame = api.getGame();
+      // console.log(showGame);
   };
-
-//if broken insert data for function param
-// const onUpdatingBoard = function(event) {
-//   // event.preventDefault();
-//   let data-attr = $( this ).data("box-num");
-//
-//   let data = getFormFields(event.target);
-//   // if (store.user) {
-//     api.getGame()
-//       .then((response) => {
-//         store.games = response.games;
-//         return store.games;
-//       })
-//       .then(ui.getGameSuccess)
-//       .catch(ui.getGameFailure);
-//     // }
-// };
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#new-game').on('click', onNewGame);
-  // $('.0cell').on('click', onUpdateCurrentGame);
   $('#sign-in').on('submit', onSignIn);
   $('#sign-out').on('submit', onSignOut);
   $('#change-password').on('submit', onChangePassword);
   $('#get-games').on('click', onGetGame);
-  $('.game-board-container div').on('click', gameInitiated);
+  $('.game-board-container div').on('click', onGameInitiated);
 };
 
 module.exports = {

@@ -17,8 +17,16 @@ const changePasswordSuccess = () => {
   console.log("Password Successfully Changed.");
 };
 
+const updateBoardSucces = () => {
+  console.log("Board Successfully Changed.");
+};
+
+const updateBoardFailed = () => {
+  console.log("Board Update Failed.");
+};
+
 const getGameFailure = function() {
-  console.log('get game failure');
+  console.log('Failure in getting game');
 };
 
 const success = (data) => {
@@ -38,4 +46,6 @@ module.exports = {
   changePasswordSuccess,
   getGameSuccess,
   getGameFailure,
+  updateBoardSucces,
+  updateBoardFailed,
 };
