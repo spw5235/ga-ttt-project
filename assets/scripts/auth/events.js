@@ -66,6 +66,8 @@ let currPlayNum;
 
 const onNewGame = function(event) {
   event.preventDefault();
+  $('.dummy-game-board-container').remove();
+  $('.game-board-container').show();
   gameBoard = ["", "", "", "", "", "", "", "", ""];
   $('.game-board-container').children().text('');
   if (store.user) {
@@ -95,6 +97,11 @@ const onGetGame = function(event) {
 let isGameOver = false;
 
 const onGameInitiated = function(event) {
+  if (isGameOver !== true) {
+    console.log('game is not over');
+  } else {
+    return;
+  }
     // if ((ui.beginPlay === true) && (isGameOver !== true)) {
     //   console.log('you are logged in, please continue');
     // } else if ((ui.beginPlay === true) && (isGameOver === true)) {
