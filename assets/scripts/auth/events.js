@@ -8,28 +8,58 @@ const getFormFields = require('../../../lib/get-form-fields');
 const store = require('../store');
 const board = require('../board');
 let isGameOver = false;
+let storeSymbol;
 
 $('#sign-up').hide();
 // let currentGameId;
 // console.log(currentGameId);
 
-const onDisplayLastOver = function() {
-  console.log("onShowLastGame");
-  api.getGame()
-    .then((response) => {
-      let arrLength = (response.games.length) - 1;
-      let newVal = response.games[arrLength];
-      console.log(newVal);
-      store.lastGameOver = newVal;
-  });
-  if (store.lastGameOver === false || store.lastGameOver) {
+// const showWinLoss = function() {
+//   console.log("show win loss here");
+//   api.getGame()
+//     .then((response) => {
+      // for (let i = 0; i < response.games.length; i++) {
+      //   console.log('response id');
+      //   console.log(response.games[i].id);
+      //   console.log('response games');
+      //   console.log(response.games);
+      //   // console.log(response.games.length);
+      //   // console.log(response.games);
+      //   // console.log(response.games[i]);
+      //   // console.log(response.games[i].over);
+//
+//
+//
+//         // for (let j = 0; j < response.games.length; j++) {
+//         //
+//         // }
+//
+//
+//         store.allID = response.games.id;
+//       }
+//     });
+//       // let newVal = response.games[arrLength];
+//       // console.log(newVal);
+//       // store.lastGameOver = newVal;
+//   };
 
-    console.log('store condition');
-    $(".score").text("Status of last game last game: Unfinished");
-  } else {
-    $(".score").text("Status of last game last game: Completed");
-  }
-};
+// const onDisplayLastOver = function() {
+//   console.log("onShowLastGame");
+//   api.getGame()
+//     .then((response) => {
+//       let arrLength = (response.games.length) - 1;
+//       let newVal = response.games[arrLength];
+//       console.log(newVal);
+//       store.lastGameOver = newVal;
+//   });
+//   if (store.lastGameOver === false || store.lastGameOver === "false") {
+//
+//     console.log('store condition');
+//     $(".score").text("Status of last game last game: Unfinished");
+//   } else {
+//     $(".score").text("Status of last game last game: Completed");
+//   }
+// };
 
 // const onShowLastGame = function() {
 //   // if (store.user) {
@@ -127,12 +157,12 @@ const onNewGame = function(event) {
   $('.game-board-container').show();
   gameBoard = ["", "", "", "", "", "", "", "", ""];
   $('.game-board-container').children().text('');
+  let data = getFormFields(event.target);
   if (store.user) {
-    api.newGame()
+    api.newGame(data)
       .then((response) => {
         store.curGameId = response.game.id;
         console.log(store.curGameId);
-        return store.curGameId;
       })
       .done(ui.onNewGameSuccess)
       .fail(ui.onNewGameFail);
@@ -140,6 +170,15 @@ const onNewGame = function(event) {
 
   isGameOver = false;
 };
+//
+// const updateGame = function(event) {
+//   event.preventDefault();
+//   api.updatingBoard()
+//     .then((response) => {
+//       store.curGameId
+//     })
+//
+// };
 
 ///Old new Game Constant
 // const onNewGame = function(event) {
@@ -161,18 +200,19 @@ const onNewGame = function(event) {
 //   isGameOver = false;
 // };
 
-const onGetGame = function(event) {
-  event.preventDefault();
-  // if (store.user) {
-    api.getGame()
-      .then((response) => {
-        store.games = response.games;
-        return store.games;
-      })
-      .then(ui.getGameSuccess)
-      .catch(ui.getGameFailure);
-    // }
-};
+// const getAllGames = function() {
+//   event.preventDefault();
+//   // if (store.user) {
+//     api.onGetAllGames()
+//       .then((response) => {
+//         store.games = response.games;
+//         console.log(store.games);
+//         return store.games;
+//       })
+//       .then(ui.getGameSuccess)
+//       .catch(ui.getGameFailure);
+//     // }
+// };
 
 
 
@@ -196,8 +236,7 @@ const onGameInitiated = function(event) {
     if (validMove) {
       //clear preivous error messages
       $(".player-message").text("");
-      board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
-
+      storeSymbol = board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
       // game.game.cell.index = board.divClassNum;
       // game.game.cell.value = board.currPlayer;
       //determines symbol to display on page and pushes to array
@@ -218,16 +257,31 @@ const onGameInitiated = function(event) {
 
           //Prevents game from continuing
           isGameOver = true;
+          api.updatingBoard(divClassNum, storeSymbol, isGameOver);
+          console.log('end of game');
       } else {
+        api.updatingBoard(divClassNum, storeSymbol, isGameOver);
+        console.log(getAllGames());
         nextPlayer = board.nextPlayerFunc(currPlayer, playerX, playerO);
         // board.changePlayer(currPlayer, playerX, playerO);
         $(".player-turn").text("Player " + currPlayNum + ", it's your turn");
       }
+      // api.updatingBoard(eventTargetId, currPlayer, isGameOver)
+      // .then((response) => {
+      //   store.lastEntry = response.
+      // });
+      //   .done(ui.updateBoardSucces)
+      //   .fail(ui.updateBoardFailed);
 
-      api.updatingBoard(eventTargetId, currPlayer, isGameOver)
-        .done(ui.updateBoardSucces)
-        .fail(ui.updateBoardFailed);
-      onDisplayLastOver();
+        // api.getGame()
+        //   .then((response) => {
+        //     let allGameLength = response.games.length;
+        //     let currGame = response.games[allGameLength];
+        //     console.log(currGame);
+        //   })
+
+      // onDisplayLastOver();
+      // showWinLoss();
 
       // onShowLastGame();
       // let test = onShowLastGame();
@@ -244,6 +298,7 @@ const onGameInitiated = function(event) {
       // })
       // .done(ui.updateBoardSucces)
       // .fail(ui.updateBoardFailed);
+      console.log(store.curGameId);
     } else {
         $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
       }
@@ -266,6 +321,7 @@ const addHandlers = () => {
 
 module.exports = {
   addHandlers,
-  onGetGame,
+  // onGetGame,
+  // showWinLoss,
   // onShowLastGame,
 };

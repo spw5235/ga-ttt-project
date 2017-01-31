@@ -42,17 +42,18 @@ const changePassword = function(data){
   });
 };
 
-const newGame = function() {
+const newGame = function(data) {
   return $.ajax({
       url: config.apiOrigin + '/games/',
       headers: {
         Authorization: 'Token token=' + store.user.token,
       },
       method: 'POST',
+      data,
   });
 };
 
-const getGame = function () {
+const onGetAllGames = function () {
   return $.ajax ({
     url: config.apiOrigin + '/games/',
     method: 'GET',
@@ -97,7 +98,7 @@ module.exports = {
   signIn,
   changePassword,
   newGame,
-  getGame,
+  onGetAllGames,
   updatingBoard,
   getCurrentGame,
   signOut,
