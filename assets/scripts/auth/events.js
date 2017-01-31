@@ -17,7 +17,7 @@ const onDisplayLastOver = function() {
   console.log("onShowLastGame");
   api.getGame()
     .then((response) => {
-      let arrLength = (response.games.length) - 2;
+      let arrLength = (response.games.length) - 1;
       let newVal = response.games[arrLength];
       console.log(newVal);
       store.lastGameOver = newVal;
@@ -131,13 +131,35 @@ const onNewGame = function(event) {
     api.newGame()
       .then((response) => {
         store.curGameId = response.game.id;
+        console.log(store.curGameId);
         return store.curGameId;
       })
       .done(ui.onNewGameSuccess)
       .fail(ui.onNewGameFail);
   }
+
   isGameOver = false;
 };
+
+///Old new Game Constant
+// const onNewGame = function(event) {
+//   event.preventDefault();
+//   $('.dummy-game-board-container').remove();
+//   $('.game-board-container').show();
+//   gameBoard = ["", "", "", "", "", "", "", "", ""];
+//   $('.game-board-container').children().text('');
+//   if (store.user) {
+//     api.newGame()
+//       .then((response) => {
+//         store.curGameId = response.game.id;
+//         return store.curGameId;
+//       })
+//       .done(ui.onNewGameSuccess)
+//       .fail(ui.onNewGameFail);
+//   }
+//
+//   isGameOver = false;
+// };
 
 const onGetGame = function(event) {
   event.preventDefault();
@@ -190,14 +212,17 @@ const onGameInitiated = function(event) {
             $(".player-turn").text("");
             $(".player-message").text("The game has ended in a draw");
           }
+
+          ///Changes name of new game button
+          $('#new-game-b').text("Play Again");
+
+          //Prevents game from continuing
           isGameOver = true;
-      }
-      else {
+      } else {
         nextPlayer = board.nextPlayerFunc(currPlayer, playerX, playerO);
         // board.changePlayer(currPlayer, playerX, playerO);
         $(".player-turn").text("Player " + currPlayNum + ", it's your turn");
       }
-
 
       api.updatingBoard(eventTargetId, currPlayer, isGameOver)
         .done(ui.updateBoardSucces)

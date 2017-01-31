@@ -15,7 +15,9 @@ const signInSuccess = function() {
 
 const signUpSuccess = function() {
   $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
-  console.log('signup in success');
+  $(".player-message").css("color", "yello");
+  $('#sign-up').slideUp();
+  $('#sign-in').slideDown();
 };
 
 const signOutSuccess = function() {
@@ -35,7 +37,10 @@ const getGameSuccess = function() {
 };
 
 const changePasswordSuccess = () => {
-  console.log("Password Successfully Changed.");
+  $('#change-password').slideUp();
+  $('#sign-in').slideDown();
+  $(".player-message").text("Alert: You have successfully changed your password. Please login before starting the game");
+  $(".player-message").css("color", "yello");
 };
 
 const updateBoardSucces = () => {
