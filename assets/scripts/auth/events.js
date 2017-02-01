@@ -13,6 +13,44 @@ let tempSymbol;
 let nextPlayer;
 let currPlayNum;
 let isGameOver = false;
+
+const getPlayerRecord = function() {
+  let gameCount = 0;
+  api.getGame()
+    .then((response) => {
+      for (let i = 0; i < response.games.length; i++) {
+        if ( response.games[i].over === true ) {
+          gameCount = gameCount + 1;
+        }
+      }
+      store.finalGameCount = gameCount;
+      $(".score").text("Number of Games Completed: " + store.finalGameCount);
+    })
+    .then(ui.getGameSuccess)
+    .catch(ui.getGameFailure);
+  };
+//
+//
+//
+//             let gameHistory = [];
+//             gameHistory.push(response.games[i]);
+//             store.gameHist = gameHistory;
+//             return store.gameHist;
+//           }
+//           for (let j = 0; j < store.gameHistory.length; j++) {
+//             let temp = [];
+//             temp.push(store.gameHistory[j]);
+//             store.temp = temp;
+//             console.log(store.temp);
+//             return store.temp;
+//           }
+//         })
+//         .then(ui.getGameSuccess)
+//         .catch(ui.getGameFailure);
+//   };
+// };
+
+
 // const onShowLastGame = function() {
 //   // if (store.user) {
 //     api.getGame()
@@ -45,6 +83,14 @@ let isGameOver = false;
 //   }
 //   console.log(store.temp);
 // };
+
+
+
+
+
+
+
+
 const onSignUp = function(event) {
 	event.preventDefault();
 	let data = getFormFields(event.target);
@@ -91,6 +137,7 @@ const onNewGame = function(event) {
 		})
     .done(ui.success)
     .fail(ui.fail);
+    getPlayerRecord();
 };
 
 const onGetGame = function() {
@@ -210,30 +257,3 @@ module.exports = {
 	onGetGame,
 	// onShowLastGame,
 };
-//Extra Old Code
-// let test = onShowLastGame();
-// console.log(test[0][0]);
-// api.getCurrentGame()
-// .then((response) => {
-//   store.displayGameId = response.game.id;
-//   store.displayCells = response.game.cells;
-//   store.displayOver = response.game.over;
-//   $('.score').text(store.displayCells);
-//   console.log(store.displayGameId);
-//   console.log(store.displayCells);
-//   console.log(store.displayOver);
-// })
-// .done(ui.updateBoardSucces)
-// .fail(ui.updateBoardFailed);
-///////
-// $("#reset-game").on( "click", function() {
-//   console.log('reset completed');
-//   clearBoard();
-//   $(".game-box").text('');
-// });
-//////////
-//
-// game.game.cell.index = board.divClassNum;
-// game.game.cell.value = board.currPlayer;
-// determines symbol to display on page and pushes to array
-// display symbol on page
