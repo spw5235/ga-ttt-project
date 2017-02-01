@@ -173,6 +173,25 @@ const isWinner = function(arr) {
 
     return true;
   }
+
+  // let tempArrayX = [];
+  // let tempArrayY = [];
+  // let winOne = [0, 1, 2];
+  // let winTwo = [2, 1, 0];
+
+  // var arr = [1, 2, 3, 4];
+  // var winningArr = [1, 3, 5];
+  //
+  // var found = false;
+  // for (let i = 0; i < winningArr.length; i++) {
+  //     if (arr.indexOf(winningArr[i]) > -1) {
+  //         found = true;
+  //         break;
+  //     }
+  // }
+  // console.log(found);
+
+
 };
 
 //Tests to see if the game is over (using isBoardFilled and isWinner)
