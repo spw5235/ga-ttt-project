@@ -106,13 +106,23 @@ const isWinner = function(arr) {
   let tempArrayX = [];
   let tempArrayY = [];
   let winOne = [0, 1, 2];
-  let winTwo = [2, 5, 8];
-  let winThree = [6, 7, 8];
-  let winFour = [0, 3, 6];
-  let winFive = [0, 4, 8];
-  let winSix = [2, 4, 6];
-  let winSeven = [1, 4, 7];
-  let winEight = [3, 4, 5];
+  let winTwo = [2, 1, 0];
+  let winThree = [3, 4, 5];
+  let winFour = [5, 4, 3];
+  let winFive = [6, 7, 8];
+  let winSix = [8, 7, 6];
+  let winSeven = [0, 3, 6];
+  let winEight = [6, 3, 0];
+  let winOneB = [1, 4, 7];
+  let winTwoB = [7, 4, 1];
+  let winThreeB = [2, 5, 8];
+  let winFourB = [8, 5, 2];
+  let winFiveB = [0, 4, 8];
+  let winSixB = [8, 4, 0];
+  let winSevenB = [2, 4, 6];
+  let winEightB = [6, 4, 2];
+
+
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === "x") {
@@ -131,6 +141,16 @@ const isWinner = function(arr) {
   let winCompSevenX = arraysEqual(tempArrayX, winSeven);
   let winCompEightX = arraysEqual(tempArrayX, winEight);
 
+  let winCompOneXB = arraysEqual(tempArrayX, winOneB);
+  let winCompTwoXB = arraysEqual(tempArrayX, winTwoB);
+  let winCompThreeXB = arraysEqual(tempArrayX, winThreeB);
+  let winCompFourXB = arraysEqual(tempArrayX, winFourB);
+  let winCompFiveXB = arraysEqual(tempArrayX, winFiveB);
+  let winCompSixXB = arraysEqual(tempArrayX, winSixB);
+  let winCompSevenXB = arraysEqual(tempArrayX, winSevenB);
+  let winCompEightXB = arraysEqual(tempArrayX, winEightB);
+
+
   let winCompOneY = arraysEqual(tempArrayY, winOne);
   let winCompTwoY = arraysEqual(tempArrayY, winTwo);
   let winCompThreeY = arraysEqual(tempArrayY, winThree);
@@ -140,7 +160,16 @@ const isWinner = function(arr) {
   let winCompSevenY = arraysEqual(tempArrayY, winSeven);
   let winCompEightY = arraysEqual(tempArrayY, winEight);
 
-  if (winCompOneX || winCompTwoX || winCompThreeX || winCompFourX || winCompFiveX || winCompSixX || winCompSevenX || winCompEightX || winCompOneY || winCompTwoY || winCompThreeY || winCompFourY || winCompFiveY || winCompSixY || winCompSevenY || winCompEightY) {
+  let winCompOneYB = arraysEqual(tempArrayY, winOneB);
+  let winCompTwoYB = arraysEqual(tempArrayY, winTwoB);
+  let winCompThreeYB = arraysEqual(tempArrayY, winThreeB);
+  let winCompFourYB = arraysEqual(tempArrayY, winFourB);
+  let winCompFiveYB = arraysEqual(tempArrayY, winFiveB);
+  let winCompSixYB = arraysEqual(tempArrayY, winSixB);
+  let winCompSevenYB = arraysEqual(tempArrayY, winSevenB);
+  let winCompEightYB = arraysEqual(tempArrayY, winEightB);
+
+  if (winCompOneX || winCompTwoX || winCompThreeX || winCompFourX || winCompFiveX || winCompSixX || winCompSevenX || winCompEightX || winCompOneY || winCompTwoY || winCompThreeY || winCompFourY || winCompFiveY || winCompSixY || winCompSevenY || winCompEightY || winCompOneXB || winCompTwoXB || winCompThreeXB || winCompFourXB || winCompFiveXB || winCompSixXB || winCompSevenXB || winCompEightXB || winCompOneYB || winCompTwoYB || winCompThreeYB || winCompFourYB || winCompFiveYB || winCompSixYB || winCompSevenYB || winCompEightYB) {
 
     return true;
   }
