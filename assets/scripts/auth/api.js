@@ -71,8 +71,7 @@ const getCurrentGame = function () {
   });
 };
 
-const updatingBoard = function (i, v, o) {
-
+const updatingBoard = function (index, value, over) {
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.curGameId,
     method: 'PATCH',
@@ -82,10 +81,10 @@ const updatingBoard = function (i, v, o) {
     data: {
       "game": {
         "cell": {
-          "index": i,
-          "value": v,
+          "index": index,
+          "value": value,
           },
-        "over": o,
+        "over": over,
         }
     },
   });

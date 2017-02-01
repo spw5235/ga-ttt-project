@@ -33,7 +33,7 @@ const changePasswordSuccess = () => {
   console.log("Password Successfully Changed.");
 };
 
-const updateBoardSucces = () => {
+const updateBoardSuccess = () => {
   console.log("Board Successfully Changed.");
 };
 
@@ -62,7 +62,7 @@ module.exports = {
   changePasswordSuccess,
   getGameSuccess,
   getGameFailure,
-  updateBoardSucces,
+  updateBoardSuccess,
   updateBoardFailed,
   beginPlay,
   signUpSuccess,

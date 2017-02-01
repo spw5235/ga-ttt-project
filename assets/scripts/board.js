@@ -1,24 +1,5 @@
 'use strict';
 
-// const store = require('./store');
-// const api = require('./auth/api');
-// const ui = require('./auth/ui');
-
-// const playerSummary = function () {
-//   if (store.user) {
-//     if (store.user) {
-//       api.getGame()
-//         .then((response) => {
-//           store.gameSummary = response.game.id;
-//           return store.gameSummary;
-//         })
-//         .done(console.log(store.gameSummary))
-//         .fail(ui.fail);
-//     }
-//   } else {
-//     console.log('false');
-//   }
-// };
 
 // Message for who's turn it is
 const nextPlayerFunc = function(currPlayer, playerX, playerO) {
@@ -59,15 +40,18 @@ const currPlayerTurn = function(arr, playerX ,playerO) {
   return currPlayer;
 };
 
+// const jQueryText = function(divString, textString) {
+//   $(divString).text(textString);
+// };
 
 //Changes player after turn
-const changePlayer = function (currPlayer, playerX, playerO) {
-  if ( currPlayer === playerX ) {
-    currPlayer = playerO;
-  } else {
-    currPlayer = playerX;
-  }
-};
+// const changePlayer = function (currPlayer, playerX, playerO) {
+//   if ( currPlayer === playerX ) {
+//     currPlayer = playerO;
+//   } else {
+//     currPlayer = playerX;
+//   }
+// };
 
 //Function determines whether to insert X or O
 //depending on playerNumber
@@ -80,8 +64,6 @@ const symbolValue = function (player, divClassNum, useBoard, tempSymbol, playerX
     tempSymbol = 'o';
   }
   return tempSymbol;
-  // const divClassAndPlay = [divClassNum, tempSymbol];
-  // return divClassAndPlay;
 };
 
 //determines if cell was already clicked
@@ -139,6 +121,7 @@ const isWinner = function(arr) {
       tempArrayY.push(i);
     }
   }
+
   let winCompOneX = arraysEqual(tempArrayX, winOne);
   let winCompTwoX = arraysEqual(tempArrayX, winTwo);
   let winCompThreeX = arraysEqual(tempArrayX, winThree);
@@ -180,9 +163,9 @@ const recordMove = function(divClassNum, gameBoard) {
   }
 };
 
-const removeText = function(div) {
-  let textDiv = $(div);
-	$(textDiv).text("");
+const removeText = function(divString) {
+  let textDiv = $(divString);
+	textDiv.text("");
 };
 
 ////CSS Related jQuery
@@ -230,71 +213,10 @@ $('#sign-up-b').on('sign-out-b', showSignOut);
 
 
 
-
-
-
-/////////// End Revised Function//////////////
-
-
-///////////////////My Old Work///////////////////////
-
-// $(".game-board-container div").on( "click", function() {
-//     //select clack of clicked
-//     // let testclass = $(".0cell").data("box-num");
-//     // let testclassText = testclass.attr()
-//     // let testattr = $( this ).data("box-num");
-//     // console.log(testattr);
-//     //
-//     // const divClass = $( this ).attr("id");
-//     //
-//     // //convert string to num
-//     // const divClassNum = parseInt(divClass);
-//     //
-//     // const validMove = recordMove(divClassNum);
-//
-//     //checks if cell is empty - if not, text.Error
-//     if (validMove) {
-//       //clear preivous error messages
-//       // $(".player-message").text("");
-//       //determines symbol to display on page and pushes to array
-//       // symbolValue(currPlayer, divClassNum);
-//       // let divClassNumStore = divClassNum;
-//       //display symbol on page
-//       // $( this ).text( tempSymbol );
-//       //test if game over - i.e. tie or win
-//       if (gameOver(gameBoard)) {
-//         //if tie, remove warning text, alert tie
-//         if (isBoardFilled(gameBoard)) {
-//           $(".player-turn").text("");
-//           $(".player-message").text("The game has ended in a draw");
-//         } else if (isWinner(gameBoard)) {
-//           $(".player-turn").text("");
-//           $(".player-message").text("Player " + currPlayer + " has won the game");
-//         }
-//       } else {
-//         changePlayer();
-//         currentPlayTurn = messageText(currPlayer);
-//         $(".player-turn").text(currentPlayTurn);
-//       }
-//     } else {
-//       $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
-//     }
-//   });
-
-//
-// $("#reset-game").on( "click", function() {
-//   console.log('reset completed');
-//   clearBoard();
-//   $(".game-box").text('');
-// });
-
 module.exports = {
-  // tempSymbol,
   isWinner,
-  // gameBoard,
-  recordMove,
   removeText,
-  changePlayer,
+  recordMove,
   gameOver,
   isBoardFilled,
   symbolValue,
@@ -304,5 +226,89 @@ module.exports = {
   currPlayerTurn,
   nextPlayerFunc,
   currentPlayerVal,
-  // playerSummary,
-  };
+};
+
+
+  ///Old Code
+
+  // const store = require('./store');
+  // const api = require('./auth/api');
+  // const ui = require('./auth/ui');
+
+  // const playerSummary = function () {
+  //   if (store.user) {
+  //     if (store.user) {
+  //       api.getGame()
+  //         .then((response) => {
+  //           store.gameSummary = response.game.id;
+  //           return store.gameSummary;
+  //         })
+  //         .done(console.log(store.gameSummary))
+  //         .fail(ui.fail);
+  //     }
+  //   } else {
+  //     console.log('false');
+  //   }
+  // };
+  //////////////
+
+
+
+
+
+
+
+  /////////// End Revised Function//////////////
+
+
+  ///////////////////My Old Work///////////////////////
+
+  // $(".game-board-container div").on( "click", function() {
+  //     //select clack of clicked
+  //     // let testclass = $(".0cell").data("box-num");
+  //     // let testclassText = testclass.attr()
+  //     // let testattr = $( this ).data("box-num");
+  //     // console.log(testattr);
+  //     //
+  //     // const divClass = $( this ).attr("id");
+  //     //
+  //     // //convert string to num
+  //     // const divClassNum = parseInt(divClass);
+  //     //
+  //     // const validMove = recordMove(divClassNum);
+  //
+  //     //checks if cell is empty - if not, text.Error
+  //     if (validMove) {
+  //       //clear preivous error messages
+  //       // $(".player-message").text("");
+  //       //determines symbol to display on page and pushes to array
+  //       // symbolValue(currPlayer, divClassNum);
+  //       // let divClassNumStore = divClassNum;
+  //       //display symbol on page
+  //       // $( this ).text( tempSymbol );
+  //       //test if game over - i.e. tie or win
+  //       if (gameOver(gameBoard)) {
+  //         //if tie, remove warning text, alert tie
+  //         if (isBoardFilled(gameBoard)) {
+  //           $(".player-turn").text("");
+  //           $(".player-message").text("The game has ended in a draw");
+  //         } else if (isWinner(gameBoard)) {
+  //           $(".player-turn").text("");
+  //           $(".player-message").text("Player " + currPlayer + " has won the game");
+  //         }
+  //       } else {
+  //         changePlayer();
+  //         currentPlayTurn = messageText(currPlayer);
+  //         $(".player-turn").text(currentPlayTurn);
+  //       }
+  //     } else {
+  //       $(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
+  //     }
+  //   });
+
+  //
+  // $("#reset-game").on( "click", function() {
+  //   console.log('reset completed');
+  //   clearBoard();
+  //   $(".game-box").text('');
+  // });
