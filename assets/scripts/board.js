@@ -101,28 +101,13 @@ function arraysEqual(arr1, arr2) {
   return true;
 }
 
-//Determines if anyone won after a turn
+const sortFunction = function (a,b) {
+    return a - b;
+};
+
 const isWinner = function(arr) {
   let tempArrayX = [];
   let tempArrayY = [];
-  let winOne = [0, 1, 2];
-  let winTwo = [2, 1, 0];
-  let winThree = [3, 4, 5];
-  let winFour = [5, 4, 3];
-  let winFive = [6, 7, 8];
-  let winSix = [8, 7, 6];
-  let winSeven = [0, 3, 6];
-  let winEight = [6, 3, 0];
-  let winOneB = [1, 4, 7];
-  let winTwoB = [7, 4, 1];
-  let winThreeB = [2, 5, 8];
-  let winFourB = [8, 5, 2];
-  let winFiveB = [0, 4, 8];
-  let winSixB = [8, 4, 0];
-  let winSevenB = [2, 4, 6];
-  let winEightB = [6, 4, 2];
-
-
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === "x") {
@@ -132,67 +117,214 @@ const isWinner = function(arr) {
     }
   }
 
-  let winCompOneX = arraysEqual(tempArrayX, winOne);
-  let winCompTwoX = arraysEqual(tempArrayX, winTwo);
-  let winCompThreeX = arraysEqual(tempArrayX, winThree);
-  let winCompFourX = arraysEqual(tempArrayX, winFour);
-  let winCompFiveX = arraysEqual(tempArrayX, winFive);
-  let winCompSixX = arraysEqual(tempArrayX, winSix);
-  let winCompSevenX = arraysEqual(tempArrayX, winSeven);
-  let winCompEightX = arraysEqual(tempArrayX, winEight);
+  let winOne = [0, 1, 2];
 
-  let winCompOneXB = arraysEqual(tempArrayX, winOneB);
-  let winCompTwoXB = arraysEqual(tempArrayX, winTwoB);
-  let winCompThreeXB = arraysEqual(tempArrayX, winThreeB);
-  let winCompFourXB = arraysEqual(tempArrayX, winFourB);
-  let winCompFiveXB = arraysEqual(tempArrayX, winFiveB);
-  let winCompSixXB = arraysEqual(tempArrayX, winSixB);
-  let winCompSevenXB = arraysEqual(tempArrayX, winSevenB);
-  let winCompEightXB = arraysEqual(tempArrayX, winEightB);
+  let winThree = [3, 4, 5];
+
+  let winFive = [6, 7, 8];
+
+  let winSeven = [0, 3, 6];
+
+  let winOneB = [1, 4, 7];
+
+  let winThreeB = [2, 5, 8];
+
+  let winFiveB = [0, 4, 8];
+
+  let winSevenB = [2, 4, 6];
+
+  let combineArr = [];
+
+  combineArr.push(winOne);
+
+  combineArr.push(winThree);
+
+  combineArr.push(winFive);
+
+  combineArr.push(winSeven);
 
 
-  let winCompOneY = arraysEqual(tempArrayY, winOne);
-  let winCompTwoY = arraysEqual(tempArrayY, winTwo);
-  let winCompThreeY = arraysEqual(tempArrayY, winThree);
-  let winCompFourY = arraysEqual(tempArrayY, winFour);
-  let winCompFiveY = arraysEqual(tempArrayY, winFive);
-  let winCompSixY = arraysEqual(tempArrayY, winSix);
-  let winCompSevenY = arraysEqual(tempArrayY, winSeven);
-  let winCompEightY = arraysEqual(tempArrayY, winEight);
+  combineArr.push(winOneB);
 
-  let winCompOneYB = arraysEqual(tempArrayY, winOneB);
-  let winCompTwoYB = arraysEqual(tempArrayY, winTwoB);
-  let winCompThreeYB = arraysEqual(tempArrayY, winThreeB);
-  let winCompFourYB = arraysEqual(tempArrayY, winFourB);
-  let winCompFiveYB = arraysEqual(tempArrayY, winFiveB);
-  let winCompSixYB = arraysEqual(tempArrayY, winSixB);
-  let winCompSevenYB = arraysEqual(tempArrayY, winSevenB);
-  let winCompEightYB = arraysEqual(tempArrayY, winEightB);
+  combineArr.push(winThreeB);
 
-  if (winCompOneX || winCompTwoX || winCompThreeX || winCompFourX || winCompFiveX || winCompSixX || winCompSevenX || winCompEightX || winCompOneY || winCompTwoY || winCompThreeY || winCompFourY || winCompFiveY || winCompSixY || winCompSevenY || winCompEightY || winCompOneXB || winCompTwoXB || winCompThreeXB || winCompFourXB || winCompFiveXB || winCompSixXB || winCompSevenXB || winCompEightXB || winCompOneYB || winCompTwoYB || winCompThreeYB || winCompFourYB || winCompFiveYB || winCompSixYB || winCompSevenYB || winCompEightYB) {
+  combineArr.push(winFiveB);
 
-    return true;
+  combineArr.push(winSevenB);
+
+
+  tempArrayX = tempArrayX.sort(sortFunction);
+  tempArrayX = tempArrayX.join(",");
+
+  tempArrayY = tempArrayY.sort(sortFunction);
+  tempArrayY = tempArrayY.join(",");
+
+  for (let i = 0; i < combineArr.length; i++) {
+  	let zeroTrue = false;
+    let oneTrue = false;
+    let twoTrue = false;
+    let thisGameOver = false;
+  	let valueZero = combineArr[i][0].toString();
+    let valueOne = combineArr[i][1].toString();
+    let valueTwo = combineArr[i][2].toString();
+
+  	for (let j = 0; j < tempArrayX.length; j++) {
+    	if (tempArrayX[j] === valueZero) {
+      	zeroTrue = true;
+        //console.log('if conditional - valueZero');
+        //console.log(zeroTrue)
+      } else if (tempArrayX[j] === valueOne) {
+      	oneTrue = true;
+        //console.log('if conditional - valone')
+        //console.log(oneTrue)
+      } else if (tempArrayX[j] === valueTwo) {
+      	//console.log('if conditional - valTwo')
+      	twoTrue = true;
+      }
+    }
+
+    if ( zeroTrue && oneTrue && twoTrue) {
+      thisGameOver = true;
+      //console.log('this game over');
+      return true;
+    } else {
+        zeroTrue = false;
+        oneTrue = false;
+        twoTrue = false;
+        thisGameOver = false;
+    }
   }
 
-  // let tempArrayX = [];
-  // let tempArrayY = [];
-  // let winOne = [0, 1, 2];
-  // let winTwo = [2, 1, 0];
+  for (let i = 0; i < combineArr.length; i++) {
+  	let zeroTrue = false;
+    let oneTrue = false;
+    let twoTrue = false;
+    let thisGameOver = false;
+  	let valueZero = combineArr[i][0].toString();
+    let valueOne = combineArr[i][1].toString();
+    let valueTwo = combineArr[i][2].toString();
 
-  // var arr = [1, 2, 3, 4];
-  // var winningArr = [1, 3, 5];
-  //
-  // var found = false;
-  // for (let i = 0; i < winningArr.length; i++) {
-  //     if (arr.indexOf(winningArr[i]) > -1) {
-  //         found = true;
-  //         break;
-  //     }
-  // }
-  // console.log(found);
+  	for (let j = 0; j < tempArrayY.length; j++) {
+    	if (tempArrayY[j] === valueZero) {
+      	zeroTrue = true;
+        //console.log('if conditional - valueZero');
+        //console.log(zeroTrue)
+      } else if (tempArrayY[j] === valueOne) {
+      	oneTrue = true;
+        //console.log('if conditional - valone')
+        //console.log(oneTrue)
+      } else if (tempArrayY[j] === valueTwo) {
+      	//console.log('if conditional - valTwo')
+      	twoTrue = true;
+      }
+    }
 
+    if ( zeroTrue && oneTrue && twoTrue) {
+      thisGameOver = true;
+      return true;
+    } else {
+        zeroTrue = false;
+        oneTrue = false;
+        twoTrue = false;
+        thisGameOver = false;
+    }
+  }
 
+  return false;
 };
+
+//Determines if anyone won after a turn
+// const isWinner = function(arr) {
+//   let tempArrayX = [];
+//   let tempArrayY = [];
+//   let winOne = [0, 1, 2];
+//   let winTwo = [2, 1, 0];
+//   let winThree = [3, 4, 5];
+//   let winFour = [5, 4, 3];
+//   let winFive = [6, 7, 8];
+//   let winSix = [8, 7, 6];
+//   let winSeven = [0, 3, 6];
+//   let winEight = [6, 3, 0];
+//   let winOneB = [1, 4, 7];
+//   let winTwoB = [7, 4, 1];
+//   let winThreeB = [2, 5, 8];
+//   let winFourB = [8, 5, 2];
+//   let winFiveB = [0, 4, 8];
+//   let winSixB = [8, 4, 0];
+//   let winSevenB = [2, 4, 6];
+//   let winEightB = [6, 4, 2];
+//
+//
+//
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === "x") {
+//       tempArrayX.push(i);
+//     } else if (arr[i] === "o") {
+//       tempArrayY.push(i);
+//     }
+//   }
+//
+//   let winCompOneX = arraysEqual(tempArrayX, winOne);
+//   let winCompTwoX = arraysEqual(tempArrayX, winTwo);
+//   let winCompThreeX = arraysEqual(tempArrayX, winThree);
+//   let winCompFourX = arraysEqual(tempArrayX, winFour);
+//   let winCompFiveX = arraysEqual(tempArrayX, winFive);
+//   let winCompSixX = arraysEqual(tempArrayX, winSix);
+//   let winCompSevenX = arraysEqual(tempArrayX, winSeven);
+//   let winCompEightX = arraysEqual(tempArrayX, winEight);
+//
+//   let winCompOneXB = arraysEqual(tempArrayX, winOneB);
+//   let winCompTwoXB = arraysEqual(tempArrayX, winTwoB);
+//   let winCompThreeXB = arraysEqual(tempArrayX, winThreeB);
+//   let winCompFourXB = arraysEqual(tempArrayX, winFourB);
+//   let winCompFiveXB = arraysEqual(tempArrayX, winFiveB);
+//   let winCompSixXB = arraysEqual(tempArrayX, winSixB);
+//   let winCompSevenXB = arraysEqual(tempArrayX, winSevenB);
+//   let winCompEightXB = arraysEqual(tempArrayX, winEightB);
+//
+//
+//   let winCompOneY = arraysEqual(tempArrayY, winOne);
+//   let winCompTwoY = arraysEqual(tempArrayY, winTwo);
+//   let winCompThreeY = arraysEqual(tempArrayY, winThree);
+//   let winCompFourY = arraysEqual(tempArrayY, winFour);
+//   let winCompFiveY = arraysEqual(tempArrayY, winFive);
+//   let winCompSixY = arraysEqual(tempArrayY, winSix);
+//   let winCompSevenY = arraysEqual(tempArrayY, winSeven);
+//   let winCompEightY = arraysEqual(tempArrayY, winEight);
+//
+//   let winCompOneYB = arraysEqual(tempArrayY, winOneB);
+//   let winCompTwoYB = arraysEqual(tempArrayY, winTwoB);
+//   let winCompThreeYB = arraysEqual(tempArrayY, winThreeB);
+//   let winCompFourYB = arraysEqual(tempArrayY, winFourB);
+//   let winCompFiveYB = arraysEqual(tempArrayY, winFiveB);
+//   let winCompSixYB = arraysEqual(tempArrayY, winSixB);
+//   let winCompSevenYB = arraysEqual(tempArrayY, winSevenB);
+//   let winCompEightYB = arraysEqual(tempArrayY, winEightB);
+//
+//   if (winCompOneX || winCompTwoX || winCompThreeX || winCompFourX || winCompFiveX || winCompSixX || winCompSevenX || winCompEightX || winCompOneY || winCompTwoY || winCompThreeY || winCompFourY || winCompFiveY || winCompSixY || winCompSevenY || winCompEightY || winCompOneXB || winCompTwoXB || winCompThreeXB || winCompFourXB || winCompFiveXB || winCompSixXB || winCompSevenXB || winCompEightXB || winCompOneYB || winCompTwoYB || winCompThreeYB || winCompFourYB || winCompFiveYB || winCompSixYB || winCompSevenYB || winCompEightYB) {
+//
+//     return true;
+//   }
+//
+//   // let tempArrayX = [];
+//   // let tempArrayY = [];
+//   // let winOne = [0, 1, 2];
+//   // let winTwo = [2, 1, 0];
+//
+//   // var arr = [1, 2, 3, 4];
+//   // var winningArr = [1, 3, 5];
+//   //
+//   // var found = false;
+//   // for (let i = 0; i < winningArr.length; i++) {
+//   //     if (arr.indexOf(winningArr[i]) > -1) {
+//   //         found = true;
+//   //         break;
+//   //     }
+//   // }
+//   // console.log(found);
+//
+//
+// };
 
 //Tests to see if the game is over (using isBoardFilled and isWinner)
 const gameOver = function (arr) {
@@ -236,6 +368,7 @@ const showChangePassword = function() {
   $('#sign-in').hide();
   $('#sign-up').hide();
   $('#sign-out').hide();
+
   $('#change-password').toggle();
 };
 
