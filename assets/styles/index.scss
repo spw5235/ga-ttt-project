@@ -25,14 +25,9 @@ body {
   background-color: #464646;
 }
 
-@media screen and (min-width: 650px) {
-  .wrap-background-image {
-    margin-right: 20%;
-  }
-}
 
 .wrap-background-image {
-  margin-right: 35%;
+  margin-right: 40%;
 }
 
 #new-game {
@@ -181,6 +176,19 @@ h3 {
 
 .steps li {
   color: orange;
+}
+
+@media screen and (max-width: 600px) {
+  .wrap-background-image {
+    margin: 0 5%;
+    margin-top: 10px;
+  }
+}
+
+@media screen and (min-width:601px) and (max-width: 1201px) {
+  .wrap-background-image {
+    margin-right: 25%;
+  }
 }
 // #gameBoard {
 //   margin: 100px 0 ;
