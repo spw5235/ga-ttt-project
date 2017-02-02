@@ -15,6 +15,8 @@ const signInSuccess = function() {
   $(".player-message").text("");
 };
 
+$(".form-control").text('');
+
 const signUpSuccess = function() {
   $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
   $(".player-message").css("color", "yello");

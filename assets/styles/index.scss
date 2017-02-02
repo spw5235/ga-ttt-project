@@ -80,7 +80,7 @@ body {
   clear: both;
 }
 
-.tic-heading {
+h1.tic-heading {
   clear: both;
   margin-top: 5px;
 }
@@ -124,6 +124,7 @@ h1 {
   font-size:25px;
   text-align: center;
   color: black;
+  margin-top: 0px;
 }
 
 h3 {
@@ -151,6 +152,10 @@ h3 {
 
 .game-box:nth-child(3n+1){
   clear:both;
+}
+
+.message-container {
+  border: 1px solid black;
 }
 
 .player-turn, .player-message, .score, .temp-login-message {
@@ -181,15 +186,20 @@ h3 {
   color: orange;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   .wrap-background-image {
     margin: 0 5%;
     margin-top: 10px;
   }
+  .game-play {
+    background-color:white;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
-@media screen and (min-width:601px) and (max-width: 1201px) {
+@media screen and (min-width:501px) and (max-width: 1201px) {
   .wrap-background-image {
-    margin-right: 25%;
+    margin-right: 35%;
   }
 }
