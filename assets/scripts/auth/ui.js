@@ -9,8 +9,6 @@ const signInSuccess = function() {
   $('#new-game-dummy').remove();
   $('#new-game').show();
   $('#game-board-container').show();
-
-
   $(".temp-login-message").text("You have successfully signed in. Start playing!");
   $(".temp-login-message").css("color", "green");
   $(".player-turn").text("Player 1, it's your turn");
@@ -20,10 +18,8 @@ const signInSuccess = function() {
 const signUpSuccess = function() {
   $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
   $(".player-message").css("color", "yello");
-  console.log('signup in success');
   $("#sign-up").slideUp();
   $("#sign-in").slideDown();
-
 };
 
 const signOutSuccess = function() {
