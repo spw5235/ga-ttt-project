@@ -22,6 +22,10 @@ const signUpSuccess = function() {
 
 const signOutSuccess = function() {
   $(".player-message").text("Alert: You have successfully signed out.");
+  $(".dummy-game-board-container").show();
+  $(".game-board-container").hide();
+  $("#new-game-dummy").show();
+  $("#new-game").hide();
   beginPlay = false;
 };
 

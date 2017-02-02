@@ -10,10 +10,29 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 }
 
 body {
+  font-family: 'Permanent Marker', cursive;
   margin-bottom:200px;
   color: #999999;
   background:#fff;
   font-size: 14px;
+  background-image: url("../img/backgroundone.png");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+}
+
+@media screen and (min-width: 650px) {
+  .wrap-background-image {
+    margin-right: 20%;
+  }
+}
+
+.wrap-background-image {
+  margin-right: 35%;
 }
 
 #new-game {
@@ -61,9 +80,16 @@ body {
   text-decoration: none;
 }
 
+#sign-up {
+  clear: both;
+}
+
+.tic-heading {
+  clear: both;
+  margin-top: 5px;
+}
+
 .login-button:hover {
-  margin: 0 auto;
-  text-align: center;
   width: 150px;
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
@@ -112,7 +138,7 @@ h3 {
 }
 
 .game-play {
-  margin: 50px;
+  margin: 25px;
 }
 
 .game-box {
@@ -153,14 +179,7 @@ h3 {
   text-align: left;
 }
 
-.steps ul {
-  left:50%;
-}
-
 .steps li {
-  float: left;
-  position: relative;
-  margin-right: 300px;
   color: orange;
 }
 // #gameBoard {

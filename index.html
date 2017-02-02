@@ -1,114 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Tic-Tac-Toe</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <!-- Do not add `link` tags unless you know what you are doing -->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-      <!-- <link rel="stylesheet" type="text/css" href="./assets/styles/index"> -->
-
-      <!-- Do not add `script` tags unless you know what you are doing -->
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<head>
+	<title>Tic-Tac-Toe</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <!-- Do not add `link` tags unless you know what you are doing -->
+	<link href="favicon.ico" rel="shortcut icon" type="image/x-icon"><!-- <link rel="stylesheet" type="text/css" href="./assets/styles/index"> -->
+	<!-- Do not add `script` tags unless you know what you are doing -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="assets/scripts/board.js" type="text/javascript" charset="utf-8"></script> -->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
 
-    </head>
-    <body class="container-fluid">
-
-      <div class="login-button-container">
-        <button class = "login-button" type="button" id="sign-up-b">Sign Up!</button>
-        <button class = "login-button" type="button" id="login-b">Sign in!</button>
-        <button class = "login-button" type="button" id="change-password-b">Change Password</button>
-        <button class = "login-button" type="button" id="sign-out-b">Sign Out</button>
-      </div>
-
-      <form id="sign-up" class="form">
-        <fieldset>
-          <legend>Sign up!</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="credentials[password]" value="" placeholder="password">
-          <input type="password" name="credentials[password_confirmation]" value="" placeholder="password confirmation">
-          <input type="submit" name="submit" value="Sign up!">
-        </fieldset>
-      </form>
-      <form id="sign-in" class="form">
-        <fieldset>
-          <legend>Sign in!</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="credentials[password]" value="" placeholder="password">
-          <input type="submit" name="submit" value="Sign in!">
-        </fieldset>
-      </form>
-      <form id="sign-out" class="form">
-        <fieldset>
-          <legend>Sign out!</legend>
-          <input type="submit" name="submit" value="Sign out!">
-        </fieldset>
-      </form>
-      <form id="change-password" class="form">
-        <fieldset>
-          <legend>Change Password</legend>
-          <input type="text" name="credentials[email]" value="" placeholder="email">
-          <input type="password" name="passwords[old]" value="" placeholder="Old Password">
-          <input type="password" name="passwords[new]" value="" placeholder="New Password">
-          <input type="submit" name="submit" value="Change Password">
-        </fieldset>
-      </form>
-
-      <h1>Tic-Tac-Toe</h1>
-      <h3>"The lamest game on earth"</h3>
-      <div class="game-play">
-        <div class="player-message"></div>
-        <div class="temp-login-message"></div>
-        <div class="player-turn">Please sign-up or sign-in to start playing</div>
-        <div class="score"></div>
-        <div class = "game-board-container">
-            <div class="0cell game-box" id="0"></div>
-            <div class="1cell game-box" id="1"></div>
-            <div class="2cell game-box" id="2"></div>
-
-            <div class="3cell game-box" id="3"></div>
-            <div class="4cell game-box" id="4"></div>
-            <div class="5cell game-box" id="5"></div>
-
-            <div class="6cell game-box" id="6"></div>
-            <div class="7cell game-box" id="7"></div>
-            <div class="8cell game-box" id="8"></div>
-        </div>
-
-        <div class = "dummy-game-board-container">
-            <div class="game-box"></div>
-            <div class="game-box"></div>
-            <div class="game-box"></div>
-
-            <div class="game-box"></div>
-            <div class="game-box"></div>
-            <div class="game-box"></div>
-
-            <div class="game-box"></div>
-            <div class="game-box"></div>
-            <div class="game-box"></div>
-        </div>
-          <!-- <div class="reset-game-container">
+	<script charset="utf-8" defer src="public/vendor.js" type="text/javascript">
+	</script>
+	<script charset="utf-8" defer src="public/application.js" type="text/javascript">
+	</script>
+</head>
+<body class="container-fluid">
+    <div class = "wrap-background-image">
+	<div class="login-button-container">
+		<button class="login-button" id="sign-up-b" type="button">Sign Up!</button> <button class="login-button" id="login-b" type="button">Sign in!</button> <button class="login-button" id="change-password-b" type="button">Change Password</button> <button class="login-button" id="sign-out-b" type="button">Sign Out</button>
+	</div>
+	<form class="form" id="sign-up" name="sign-up">
+		<fieldset>
+			<legend>Sign up!</legend> <input name="credentials[email]" placeholder="email" type="text" value=""> <input name="credentials[password]" placeholder="password" type="password" value=""> <input name="credentials[password_confirmation]" placeholder="password confirmation" type="password" value=""> <input name="submit" type="submit" value="Sign up!">
+		</fieldset>
+	</form>
+	<form class="form" id="sign-in" name="sign-in">
+		<fieldset>
+			<legend>Sign in!</legend> <input name="credentials[email]" placeholder="email" type="text" value=""> <input name="credentials[password]" placeholder="password" type="password" value=""> <input name="submit" type="submit" value="Sign in!">
+		</fieldset>
+	</form>
+	<form class="form" id="sign-out" name="sign-out">
+		<fieldset>
+			<legend>Sign out!</legend> <input name="submit" type="submit" value="Sign out!">
+		</fieldset>
+	</form>
+	<form class="form" id="change-password" name="change-password">
+		<fieldset>
+			<legend>Change Password</legend> <input name="credentials[email]" placeholder="email" type="text" value=""> <input name="passwords[old]" placeholder="Old Password" type="password" value=""> <input name="passwords[new]" placeholder="New Password" type="password" value=""> <input name="submit" type="submit" value="Change Password">
+		</fieldset>
+	</form>
+	<h1 class="tic-heading">Tic-Tac-Toe</h1>
+	<div class="game-play">
+		<div class="player-message"></div>
+		<div class="temp-login-message"></div>
+		<div class="player-turn">
+			Please sign-up or sign-in to start playing
+		</div>
+		<div class="score"></div>
+		<div class="game-board-container">
+			<div class="0cell game-box" id="0"></div>
+			<div class="1cell game-box" id="1"></div>
+			<div class="2cell game-box" id="2"></div>
+			<div class="3cell game-box" id="3"></div>
+			<div class="4cell game-box" id="4"></div>
+			<div class="5cell game-box" id="5"></div>
+			<div class="6cell game-box" id="6"></div>
+			<div class="7cell game-box" id="7"></div>
+			<div class="8cell game-box" id="8"></div>
+		</div>
+		<div class="dummy-game-board-container">
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+		</div><!-- <div class="reset-game-container">
               <button id="reset-game">Reset Board</button>
           </div> -->
-            <div id="new-game" class="new-game-container">
-              <button type="button" id="new-game-b">New Game</button>
-            </div>
-            <div id="new-game-dummy" class="new-game-container">
-              <button type="button" id="new-game-b-dummy">New Game</button>
-            </div>
-            <div class="steps">
-              <h3>Instructions</h3>
-              <ol>
-                <li>Step 1: Sign-Up or Sign-In</li>
-                <li>Step 2: Sign-In</li>
-                <li>Step 3: Click New Game</li>
-                <li>Step 4: Play</li>
-              </ol>
-            </div>
-      </div>
-    </body>
+		<div class="new-game-container" id="new-game">
+			<button id="new-game-b" type="button">New Game</button>
+		</div>
+		<div class="new-game-container" id="new-game-dummy">
+			<button id="new-game-b-dummy" type="button">New Game</button>
+		</div>
+		<div class="steps">
+			<h3>Instructions</h3>
+			<ol>
+				<li>Step 1: Sign-Up or Sign-In</li>
+				<li>Step 2: Sign-In</li>
+				<li>Step 3: Click New Game</li>
+				<li>Step 4: Play</li>
+			</ol>
+		</div>
+	</div>
+</body>
+</body>
 </html>

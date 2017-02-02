@@ -56,6 +56,7 @@ const onSignOut = function(event) {
   .done(ui.signOutSuccess)
   .fail(ui.fail);
 };
+
 const onChangePassword = function(event) {
 	event.preventDefault();
 	let data = getFormFields(event.target);
