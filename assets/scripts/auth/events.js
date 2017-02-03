@@ -60,9 +60,9 @@ const onSignOut = function(event) {
 const onChangePassword = function(event) {
 	event.preventDefault();
 	let data = getFormFields(event.target);
-	api.changePassword(data).done(ui.onChangePasswordSuccess)
+	api.changePassword(data)
+  .done(ui.onChangePasswordSuccess)
   .fail(ui.onChangePasswordFailure);
-
 };
 
 const onNewGame = function(event) {
@@ -187,8 +187,6 @@ const onGameInitiated = function(event) {
       } else {
         nextPlayer = '1';
       }
-
-
 			$(".player-turn").text("Player " + nextPlayer + ", it's your turn");
 		}
 

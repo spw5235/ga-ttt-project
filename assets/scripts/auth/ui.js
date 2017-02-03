@@ -8,6 +8,20 @@ let beginPlay;
 //
 // }
 
+const hideAllWarnings = function() {
+  $("#sign-out-warning").hide();
+  $("#start-game-warning").hide();
+  $("#sign-out-warning").hide();
+  $("#sign-out-warning").hide();
+  $("#sign-up-warning").hide();
+  $("#sign-in-warning").hide();
+  $("#change-password-warning").hide();
+  $("#sign-out-success").hide();
+  $("#sign-up-success").hide();
+  $("#sign-in-success").hide();
+  $("#sign-out-success").hide();
+  $("#sign-out-success").hide();
+};
 
 /////////////////////////
 //////////////////////////SUCCESSES
@@ -15,6 +29,7 @@ let beginPlay;
 
 const signInSuccess = function() {
   console.log('sign in success');
+  hideAllWarnings();
   $('#new-game-b').text('Start New Game');
   $('#change-password-b').show();
   $('#new-game').show();
@@ -28,12 +43,15 @@ const signInSuccess = function() {
   $("#sign-out-b").show();
   $("#sign-in-success").show();
   $("#start-game-warning").hide();
-  $(".player-message").text('Click "Start New Game" to play!')
+  $(".player-message").text('Click "Start New Game" to play!');
+  $(".player-turn").text('');
 };
 
 const signOutSuccess = function() {
+  hideAllWarnings();
   $('.dummy-game-board-container').show();
-  $('.player-turn').text('Alert: Please sign-up or sign-in to start playing')
+  $('#sign-out-b').hide();
+  $('.player-turn').text('Alert: Please sign-up or sign-in to start playing');
   $('.player-message').text('');
   $('#new-game').hide();
   $("#login-b").show();
@@ -48,6 +66,7 @@ const signOutSuccess = function() {
 };
 
 const onNewGameSuccess = function() {
+  hideAllWarnings();
   $('#new-game-b').hide();
   $(".player-message").text("");
   $('.player-turn').text("Player 1, it's your turn");
@@ -58,6 +77,7 @@ const onNewGameSuccess = function() {
 };
 
 const signUpSuccess = function() {
+  hideAllWarnings();
   $(".player-turn").text("");
   $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
   $(".player-message").css("color", "yello");
@@ -67,6 +87,7 @@ const signUpSuccess = function() {
 };
 
 const onChangePasswordSuccess = function() {
+  hideAllWarnings();
   $('player-message').css('color', 'green')
   $('#new-game').hide();
   $("#login-b").show();
