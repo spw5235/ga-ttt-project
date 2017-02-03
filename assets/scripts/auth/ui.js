@@ -4,61 +4,66 @@
 
 let beginPlay;
 
+// const = function() {
+//
+// }
+
+
+/////////////////////////
+//////////////////////////SUCCESSES
+/////////////////////////
+
 const signInSuccess = function() {
   console.log('sign in success');
   $('#new-game-b').text('Start New Game');
-  $('#new-game-dummy').hide();
+  $('#change-password-b').show();
   $('#new-game').show();
   $('#new-game-b').show();
   $("#sign-in").hide();
   $("#login-b").hide();
   $("#sign-up-b").hide();
   $(".dummy-game-board-container").hide();
-  $(".player-message").text('You have successfully signed-in');
   $(".player-message").css("color", "green");
-  $(".player-turn").text('Alert: Click "Start New Game" below to play!');
+  $("#sign-up-success").hide();
+  $("#sign-out-b").show();
+  $("#sign-in-success").show();
+  $("#start-game-warning").hide();
+  $(".player-message").text('Click "Start New Game" to play!')
 };
 
 const signOutSuccess = function() {
-  $('player-message').css('color', 'green')
+  $('.dummy-game-board-container').show();
+  $('.player-turn').text('Alert: Please sign-up or sign-in to start playing')
+  $('.player-message').text('');
   $('#new-game').hide();
   $("#login-b").show();
   $("#sign-up-b").show();
   $(".game-board-container").hide();
   $(".form").hide();
-  $(".player-message").text("Alert: You have successfully signed out.");
-  $(".player-turn").text("");
   $(".score").text("");
+  $('#change-password-b').hide();
+  $('#sign-out-success').show();
+  $('#sign-in-success').hide();
   beginPlay = false;
 };
 
 const onNewGameSuccess = function() {
   $('#new-game-b').hide();
   $(".player-message").text("");
-  $(".player-turn").text("Player 1, it's your turn");
+  $('.player-turn').text("Player 1, it's your turn");
+  $(".player-turn").show();
   $(".game-board-container").hide();
   $(".game-board-container").show();
+  $("#sign-in-success").hide();
 };
 
-  // $('#login-status').text('Login Status: Signed-In')
-  // $('#login-status').css('color', 'green');
-  //
-  // $('#new-game-dummy').hide();
-  // $('#new-game').show();
-  // $('#game-board-container').show();
-  //
-  // $(".temp-login-message").text("CLICK NEW GAME TO START PLAYING!");
-  // $(".temp-login-message").css("color", "red");
-  // $(".player-message").text("");
-  // $("#sign-in").hide();
-
-// $(".form-control").text('');
-
 const signUpSuccess = function() {
+  $(".player-turn").text("");
   $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
   $(".player-message").css("color", "yello");
   $("#sign-up").slideUp();
   $("#sign-in").slideDown();
+  $("#sign-up-success").show();
 };
 
 const onChangePasswordSuccess = function() {
@@ -71,9 +76,33 @@ const onChangePasswordSuccess = function() {
   $(".player-message").text("Alert: You have successfully signed out.");
   $(".player-turn").text("");
   $(".score").text("");
+  $('#change-password-b').hide();
   beginPlay = false;
 };
 
+/////////////////////////
+//////////////////////////FAILURES
+/////////////////////////
+
+const onChangePasswordFailure = function() {
+  $("#change-password-warning").show();
+}
+
+const onSignInFailure = function() {
+  $("#sign-in-warning").show();
+};
+
+const onSignOutFailure = function() {
+  $("#sign-out-warning").show();
+};
+
+const onSignUpFailure = function() {
+  $("#sign-up-warning").show();
+}
+
+/////////////////////////
+//////////////////////////OTHER
+/////////////////////////
 const getGameSuccess = function() {
   console.log('get game successful');
 };
@@ -117,4 +146,8 @@ module.exports = {
   signUpSuccess,
   onNewGameSuccess,
   onChangePasswordSuccess,
+  onChangePasswordFailure,
+  onSignInFailure,
+  onSignOutFailure,
+  onSignUpFailure,
 };

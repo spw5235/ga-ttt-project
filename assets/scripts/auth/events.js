@@ -35,7 +35,7 @@ const onSignUp = function(event) {
 	let data = getFormFields(event.target);
 	api.signUp(data)
   .then(ui.signUpSuccess)
-  .catch(ui.failure);
+  .catch(ui.onSignUpFailure);
 };
 
 const onSignIn = function(event) {
@@ -47,20 +47,21 @@ const onSignIn = function(event) {
 		return store.user;
 	})
   .then(ui.signInSuccess)
-  .catch(ui.failure);
+  .catch(ui.onSignInFailure);
 };
 const onSignOut = function(event) {
 	event.preventDefault();
 	let data = getFormFields(event.target);
 	api.signOut(data)
   .done(ui.signOutSuccess)
-  .fail(ui.fail);
+  .fail(ui.onSignOutFailure);
 };
 
 const onChangePassword = function(event) {
 	event.preventDefault();
 	let data = getFormFields(event.target);
-	api.changePassword(data).done(ui.onChangePasswordSuccess).fail(ui.fail);
+	api.changePassword(data).done(ui.onChangePasswordSuccess)
+  .fail(ui.onChangePasswordFailure);
 
 };
 
@@ -180,7 +181,15 @@ const onGameInitiated = function(event) {
 
       onUpdatingBoard(index, value, over);
 			nextPlayer = board.nextPlayerFunc(currPlayer, playerX, playerO);
-			$(".player-turn").text("Player " + currPlayNum + ", it's your turn");
+      console.log(nextPlayer);
+      if (nextPlayer === 'O') {
+        nextPlayer = '2';
+      } else {
+        nextPlayer = '1';
+      }
+
+
+			$(".player-turn").text("Player " + nextPlayer + ", it's your turn");
 		}
 
 		// api.updatingBoard(eventTargetId, currPlayer, isGameOver)
