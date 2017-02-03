@@ -60,7 +60,8 @@ const onSignOut = function(event) {
 const onChangePassword = function(event) {
 	event.preventDefault();
 	let data = getFormFields(event.target);
-	api.changePassword(data).done(ui.changePasswordSuccess).fail(ui.fail);
+	api.changePassword(data).done(ui.onChangePasswordSuccess).fail(ui.fail);
+
 };
 
 const onNewGame = function(event) {
@@ -135,7 +136,7 @@ const onGameInitiated = function(event) {
 	const eventTargetId = event.target.id;
 	const divClassNum = parseInt(eventTargetId);
 	const validMove = board.recordMove(divClassNum, gameBoard);
-
+  $(".player-turn").css('color', 'purple');
   if (validMove) {
     $('#new-game-b').show();
     $('#new-game-b').text('Reset Game');
@@ -188,6 +189,7 @@ const onGameInitiated = function(event) {
 		// onShowLastGame();
 	} else {
     $(".temp-login-message").text("");
+    $(".player-message").css('color', 'red');
 		$(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
 	}
 };

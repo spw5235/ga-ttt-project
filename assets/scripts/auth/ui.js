@@ -17,10 +17,10 @@ const signInSuccess = function() {
   $(".player-message").text('You have successfully signed-in');
   $(".player-message").css("color", "green");
   $(".player-turn").text('Alert: Click "Start New Game" below to play!');
-  $(".player-turn").css("color", "red");
 };
 
 const signOutSuccess = function() {
+  $('player-message').css('color', 'green')
   $('#new-game').hide();
   $("#login-b").show();
   $("#sign-up-b").show();
@@ -59,6 +59,19 @@ const signUpSuccess = function() {
   $(".player-message").css("color", "yello");
   $("#sign-up").slideUp();
   $("#sign-in").slideDown();
+};
+
+const onChangePasswordSuccess = function() {
+  $('player-message').css('color', 'green')
+  $('#new-game').hide();
+  $("#login-b").show();
+  $("#sign-up-b").show();
+  $(".game-board-container").hide();
+  $(".form").hide();
+  $(".player-message").text("Alert: You have successfully signed out.");
+  $(".player-turn").text("");
+  $(".score").text("");
+  beginPlay = false;
 };
 
 const getGameSuccess = function() {
@@ -103,4 +116,5 @@ module.exports = {
   beginPlay,
   signUpSuccess,
   onNewGameSuccess,
+  onChangePasswordSuccess,
 };

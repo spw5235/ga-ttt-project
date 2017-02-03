@@ -15,10 +15,15 @@
 <body class="container-fluid">
     <div class = "wrap-background-image">
 	<div class="login-button-container">
-    <img src="./assets/img/sign-up-red.png" class="login-button" id="sign-up-b">
+    <img src="./assets/img/blue-sign-up.jpg" class="login-button" id="sign-up-b">
+    <img src="./assets/img/blue-sign-in.jpg" class="login-button" id="login-b">
+    <img src="./assets/img/blue-change-password.jpg" class="login-button" id="change-password-b">
+    <img src="./assets/img/blue-sign-out.jpg" class="login-button" id="sign-out-b">
+
+    <!-- <img src="./assets/img/sign-up-red.png" class="login-button" id="sign-up-b">
     <img src="./assets/img/sign-in-red.jpg" class="login-button" id="login-b">
     <img src="./assets/img/change-password-red.jpg" class="login-button" id="change-password-b">
-    <img src="./assets/img/sign-out-red.jpg" class="login-button" id="sign-out-b">
+    <img src="./assets/img/sign-out-red.jpg" class="login-button" id="sign-out-b"> -->
 		<!-- <button class="login-button" id="sign-up-b" type="button">Sign Up!</button> -->
     <!-- <button class="login-button" id="login-b" type="button">Sign in!</button> -->
     <!-- <button class="login-button" id="change-password-b" type="button">Change Password</button> -->
@@ -49,7 +54,11 @@
 	</form>
 	<form class="form" id="change-password" name="change-password">
 		<fieldset>
-			<legend>Change Password</legend> <input name="credentials[email]" placeholder="email" type="text" value=""> <input name="passwords[old]" placeholder="Old Password" type="password" value=""> <input name="passwords[new]" placeholder="New Password" type="password" value=""> <input name="submit" type="submit" value="Change Password">
+			<legend>Change Password</legend>
+      <input name="credentials[email]" placeholder="email" type="text" value="">
+      <input name="passwords[old]" placeholder="Old Password" type="password" value="">
+      <input name="passwords[new]" placeholder="New Password" type="password" value="">
+      <input name="submit" type="submit" value="Change Password">
 		</fieldset>
 	</form>
 	<h1 class="tic-heading">Tic-Tac-Toe</h1>
@@ -59,7 +68,7 @@
 		<div class="player-message"></div>
 		<!-- <div class="temp-login-message"></div> -->
 		<div class="player-turn">
-			Please sign-up or sign-in to start playing
+			Alert: Please sign-up or sign-in to start playing
 		</div>
 		<div class="score"></div>
     </div>

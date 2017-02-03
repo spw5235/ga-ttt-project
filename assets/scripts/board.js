@@ -276,7 +276,7 @@ const showSignOut = function() {
 
 const newGameDummyButton = function() {
   $('.player-turn').text('');
-  $('.player-message').text('Alert: Before Starting the Game, you must sign-up and sign-in to your account.  Then, click the "new game" button below the board');
+  $('.player-message').text('Alert: Before Starting the Game, you must sign-up and sign-in to your account.');
 };
 
 

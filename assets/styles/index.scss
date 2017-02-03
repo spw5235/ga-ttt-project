@@ -45,7 +45,7 @@ h1 {
   font-size: 30px;
   font-family: 'Permanent Marker', cursive;
   margin-top: 5px;
-  clear:both;
+  clear: both;
   color: blue;
   text-align:center;
 }
@@ -209,13 +209,25 @@ h1 {
 
 .message-container {
   border: 1px solid black;
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Indie Flower', cursive;
 }
 
-.player-turn, .player-message, .score, .temp-login-message {
-  margin: 10px;
+.message-container h3 {
+  font-size: 22px;
+  color: black
+}
+
+.player-turn, .player-message, .temp-login-message {
   color: red;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
+}
+
+.score {
+  color: blue;
+  text-align: center;
+  font-size: 20px;
 }
 
 .player-message, .temp-login-message {
