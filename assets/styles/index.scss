@@ -1,13 +1,9 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-#sign-up, #sign-in, #sign-out, #change-password {
-  display: none;
-}
-
-.game-board-container {
-  display: none;
-}
+///////////////////////////////////////////////////////////////
+/////////////////////   Primary   /////////////////////////////
+///////////////////////////////////////////////////////////////
 
 body {
   font-family: 'Permanent Marker', cursive;
@@ -16,8 +12,6 @@ body {
   background:#fff;
   font-size: 14px;
   background-image: url("../img/backgroundtwo.png");
-  // background-repeat: no-repeat;
-  // background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,10 +19,48 @@ body {
   background-color: #464646;
 }
 
-
-
 .wrap-background-image {
   margin-right: 40%;
+}
+
+// Headings
+
+h1 {
+  font-size:25px;
+  text-align: center;
+  color: black;
+  margin-top: 0px;
+}
+
+h3 {
+  font-size:20px;
+  text-align: center;
+  color: red;
+  text-decoration: underline;
+}
+
+h1.tic-heading {
+  clear: both;
+  margin-top: 5px;
+}
+
+///////////////////////////////////////////////////////////////
+///////////////////// Forms and Buttons ///////////////////////
+///////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////
+//////////////////////////// Forms ////////////////////////////
+///////////////////////////////////////////////////////////////
+
+.form {
+  margin-top: 30px;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+}
+
+#sign-up, #sign-in, #sign-out, #change-password {
+  display: none;
 }
 
 #new-game {
@@ -40,21 +72,22 @@ body {
   text-align: center;
 }
 
+#sign-up {
+  clear: both;
+}
 
-#new-game-b, #new-game-b-dummy {
-  margin: 15px auto;
+/////////////////////////////////////////////////////
+///////////////////// Buttons ///////////////////////
+/////////////////////////////////////////////////////
+
+.login-button-container {
+  margin-top: 50px;
   text-align: center;
-  width: 150px;
 }
 
 .form button {
   color: white;
   background-color:orange;
-}
-
-.login-button-container {
-  margin-top: 50px;
-  text-align: center;
 }
 
 .login-button {
@@ -76,15 +109,6 @@ body {
   text-decoration: none;
 }
 
-#sign-up {
-  clear: both;
-}
-
-h1.tic-heading {
-  clear: both;
-  margin-top: 5px;
-}
-
 .login-button:hover {
   width: 150px;
   background: #3cb0fd;
@@ -94,6 +118,12 @@ h1.tic-heading {
   background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
+}
+
+#new-game-b, #new-game-b-dummy {
+  margin: 15px auto;
+  text-align: center;
+  width: 150px;
 }
 
 #new-game-b, #new-game-b-dummy {
@@ -113,25 +143,12 @@ h1.tic-heading {
   font-family: Arial;
 }
 
-.form {
-  margin-top: 30px;
-  display: inline-block;
-  text-align: center;
-  font-size: 16px;
-}
+//////////////////////////////////////////////////////
+///////////////////// Game box ///////////////////////
+//////////////////////////////////////////////////////
 
-h1 {
-  font-size:25px;
-  text-align: center;
-  color: black;
-  margin-top: 0px;
-}
-
-h3 {
-  font-size:20px;
-  text-align: center;
-  color: red;
-  text-decoration: underline;
+.game-board-container {
+  display: none;
 }
 
 .game-play {
@@ -154,6 +171,10 @@ h3 {
   clear:both;
 }
 
+//////////////////////////////////////////////////////
+//////////////////  Messages   ///////////////////////
+//////////////////////////////////////////////////////
+
 .message-container {
   border: 1px solid black;
 }
@@ -172,19 +193,9 @@ h3 {
   text-decoration: underline;
 }
 
-.steps {
-  font-size: 16px;
-  margin-top: 20px;
-  text-align: left;
-}
-
-.steps h3 {
-  text-align: left;
-}
-
-.steps li {
-  color: orange;
-}
+///////////////////////////////////////////////////
+///////////////////// Media ///////////////////////
+///////////////////////////////////////////////////
 
 @media screen and (max-width: 500px) {
   .wrap-background-image {
