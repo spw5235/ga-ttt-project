@@ -6,34 +6,38 @@ let beginPlay;
 
 const signInSuccess = function() {
   console.log('sign in success');
+  $('#new-game-b').text('Start New Game');
   $('#new-game-dummy').hide();
   $('#new-game').show();
+  $('#new-game-b').show();
   $("#sign-in").hide();
   $("#login-b").hide();
   $("#sign-up-b").hide();
   $(".dummy-game-board-container").hide();
   $(".player-message").text('You have successfully signed-in');
   $(".player-message").css("color", "green");
-  $(".player-turn").text('Alert: Click "New Game" below to play!');
+  $(".player-turn").text('Alert: Click "Start New Game" below to play!');
   $(".player-turn").css("color", "red");
 };
 
 const signOutSuccess = function() {
-  $('#new-game-dummy').show();
   $('#new-game').hide();
-  $("#sign-in").show();
   $("#login-b").show();
   $("#sign-up-b").show();
   $(".game-board-container").hide();
-  $(".dummy-game-board-container").show();
-  // $(".player-message").text("Alert: You have successfully signed out.");
+  $(".form").hide();
+  $(".player-message").text("Alert: You have successfully signed out.");
+  $(".player-turn").text("");
+  $(".score").text("");
   beginPlay = false;
 };
 
 const onNewGameSuccess = function() {
+  $('#new-game-b').hide();
   $(".player-message").text("");
   $(".player-turn").text("Player 1, it's your turn");
   $(".game-board-container").hide();
+  $(".game-board-container").show();
 };
 
   // $('#login-status').text('Login Status: Signed-In')
@@ -98,4 +102,5 @@ module.exports = {
   updateBoardFailed,
   beginPlay,
   signUpSuccess,
+  onNewGameSuccess,
 };
