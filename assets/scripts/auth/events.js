@@ -66,8 +66,8 @@ const onChangePassword = function(event) {
 const onNewGame = function(event) {
   isGameOver = false;
 	event.preventDefault();
-	$('.dummy-game-board-container').remove();
-	$('.game-board-container').show();
+	// $('.dummy-game-board-container').remove();
+	// $('.game-board-container').show();
 	gameBoard = ["", "", "", "", "", "", "", "", ""];
 	$('.game-board-container').children().text('');
 		api.newGame().then((response) => {

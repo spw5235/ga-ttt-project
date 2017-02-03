@@ -90,6 +90,12 @@ h1.tic-heading {
   max-width: 100px;
 }
 
+.login-button-container img:hover {
+  -moz-box-shadow: 0 0 10px black;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
+}
+
 #login-status {
   font-family: 'Indie Flower', cursive;
   float: right;
