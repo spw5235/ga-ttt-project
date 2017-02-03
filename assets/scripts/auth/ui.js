@@ -6,13 +6,14 @@ let beginPlay;
 
 const signInSuccess = function() {
   console.log('sign in success');
-  $('#new-game-dummy').remove();
+  $('#new-game-dummy').hide();
   $('#new-game').show();
   $('#game-board-container').show();
   $(".temp-login-message").text("You have successfully signed in. Start playing!");
   $(".temp-login-message").css("color", "green");
   $(".player-turn").text("Player 1, it's your turn");
   $(".player-message").text("");
+  $("#sign-in").hide();
 };
 
 $(".form-control").text('');
@@ -32,6 +33,10 @@ const signOutSuccess = function() {
   $("#new-game").hide();
   beginPlay = false;
 };
+
+const onNewGameSuccess = function() {
+  $(".player-message").text("");
+}
 
 const getGameSuccess = function() {
   console.log('get game successful');

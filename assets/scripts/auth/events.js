@@ -75,7 +75,7 @@ const onNewGame = function(event) {
       console.log(store.curGameId);
 			return store.curGameId;
 		})
-    .done(ui.success)
+    .done(ui.onNewGameSuccess)
     .fail(ui.fail);
     getPlayerRecord();
 };
@@ -150,6 +150,7 @@ const onGameInitiated = function(event) {
         onUpdatingBoard(index, value, over);
 
         board.removeText(".player-turn");
+
 				$(".player-message").text("Player " + currPlayNum + " has won the game");
 			} else if (board.isBoardFilled(gameBoard)) {
 
@@ -181,6 +182,7 @@ const onGameInitiated = function(event) {
     //   .fail(ui.updateBoardFailed);
 		// onShowLastGame();
 	} else {
+    $(".temp-login-message").text("");
 		$(".player-message").text("Error: This box has already been selected.  Please select a different box to continue the game");
 	}
 };
