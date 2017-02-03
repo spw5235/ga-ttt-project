@@ -137,6 +137,7 @@ const onGameInitiated = function(event) {
 	const validMove = board.recordMove(divClassNum, gameBoard);
 
   if (validMove) {
+    $('#new-game-b').show();
     $('#new-game-b').text('Reset Game');
     board.removeText(".player-message");
 		board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
@@ -167,6 +168,7 @@ const onGameInitiated = function(event) {
       console.log(onGetGame());
 
 			isGameOver = true;
+      $('#new-game-b').show();
       $('#new-game-b').text('Start New Game');
 
 		} else {

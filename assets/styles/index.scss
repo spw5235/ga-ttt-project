@@ -6,7 +6,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 ///////////////////////////////////////////////////////////////
 
 body {
-  font-family: 'Permanent Marker', cursive;
+  // font-family: 'Permanent Marker', cursive;
+  font-family: 'Indie Flower', cursive;
   margin-bottom:200px;
   color: #999999;
   background:#fff;
@@ -17,6 +18,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
+
 }
 
 .wrap-background-image {
@@ -25,23 +27,27 @@ body {
 
 // Headings
 
-h1 {
-  font-size:25px;
-  text-align: center;
-  color: black;
-  margin-top: 0px;
-}
+// h1 {
+//   font-size:30px;
+//   text-align: center;
+//   color: orange;
+//   margin-top: 0px;
+// }
 
 h3 {
   font-size:20px;
   text-align: center;
   color: black;
+  text-decoration: underline;
 }
 
-h1.tic-heading {
-  clear: both;
+h1 {
+  font-size: 30px;
+  font-family: 'Permanent Marker', cursive;
   margin-top: 5px;
   clear:both;
+  color: blue;
+  text-align:center;
 }
 
 ///////////////////////////////////////////////////////////////
@@ -90,7 +96,7 @@ h1.tic-heading {
 }
 
 .login-button-container {
-  margin: 50px auto 0;
+  margin: 15px auto;
   text-align: center;
 }
 
@@ -106,7 +112,7 @@ h1.tic-heading {
 }
 
 #login-status {
-  font-family: 'Indie Flower', cursive;
+  // font-family: 'Indie Flower', cursive;
   float: right;
   text-align: right;
   margin-right: 10%;
@@ -178,7 +184,7 @@ h1.tic-heading {
 }
 
 .game-play {
-  margin: 25px;
+  margin: 15px;
 }
 
 .game-box {
@@ -207,11 +213,9 @@ h1.tic-heading {
 
 .player-turn, .player-message, .score, .temp-login-message {
   margin: 10px;
-  color: black;
+  color: red;
   text-align: center;
   font-size: 16px;
-  font-family: sans-serif;
-  background: white;
 }
 
 .player-message, .temp-login-message {
