@@ -52,6 +52,16 @@ const newGame = function() {
   });
 };
 
+const getStats = function () {
+  return $.ajax ({
+    url: config.apiOrigin + '/games/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+    },
+  });
+};
+
 const getGame = function () {
   return $.ajax ({
     url: config.apiOrigin + '/games/',
@@ -100,4 +110,5 @@ module.exports = {
   getGame,
   updatingBoard,
   getCurrentGame,
+  getStats,
 };

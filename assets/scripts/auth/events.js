@@ -14,6 +14,79 @@ let nextPlayer;
 let currPlayNum;
 let isGameOver = false;
 
+const onGetStats = function() {
+  api.getStats()
+    .then((response) => {
+      console.log('response.games[1].cells[1]');
+      console.log(response.games[1].cells[1]);
+      let test = response.games[1].cells[1];
+      if (test === "X") {
+        console.log('X appears');
+      }
+      // console.log('received');
+      // console.log(response.games);
+      // console.log(response.games.length);
+      // console.log(response.games[0].over === true);
+      let win = [];
+      let loss = [];
+      let tie = [];
+      for (let i = 0; i < response.games.length; i++) {
+        if ( response.games[i].over === true ) {
+          let cellsArr = response.games[i].cells;
+          // console.log('response.games[i].cells');
+          // console.log(cellsArr);
+          let tempO = [];
+          let tempX = [];
+
+          for (let j = 0; j < cellsArr.length; j++) {
+            if ( cellsArr[j] === "O" || cellsArr[j] === "o" ) {
+              tempO.push(cellsArr[j]);
+            } else if ( cellsArr[j] === "X" || cellsArr[j] === "x" ) {
+              tempX.push(cellsArr[j]);
+            }
+          }
+
+            if (tempO.length > tempX.length) {
+              console.log('win');
+              loss.push('o');
+            } else if ( tempX.length > tempO.length ) {
+              win.push('x');
+            } else {
+              tie.push('t');
+            }
+            //
+            // console.log('game starts here');
+            // console.log('o');
+            // console.log(tempO);
+            // console.log('x');
+            // console.log(tempX);
+            // console.log('game ends here');
+          }
+        }
+        console.log('win');
+        console.log(win);
+        console.log('loss');
+        console.log(loss);
+      })
+      .done(ui.signOutSuccess)
+      .fail(ui.onSignOutFailure);
+    };
+
+
+//
+//       for (let i = 0; i < response.games.length; i++) {
+//         if ( response.games[i].over === true ) {
+//           gameCount = gameCount + 1;
+//         }
+//       }
+//       store.finalGameCount = gameCount;
+//       $(".score").text("Number of Games Completed: " + store.finalGameCount);
+//     })
+//     .then(ui.getGameSuccess)
+//     .catch(ui.getGameFailure);
+//   };
+// }
+
 const getPlayerRecord = function() {
   let gameCount = 0;
   api.getGame()
@@ -66,7 +139,7 @@ const onChangePassword = function(event) {
   .fail(ui.onChangePasswordFailure);
 };
 
-const onNewGame = function(event) {
+const onNewGame = function(event) {x
   isGameOver = false;
 	event.preventDefault();
 	// $('.dummy-game-board-container').remove();
@@ -211,6 +284,7 @@ const addHandlers = () => {
   $('#sign-out-b').on('click', onSignOut);
 	$('#change-password').on('submit', onChangePassword);
 	$('.game-board-container div').on('click', onGameInitiated);
+  $('#stats-button').on('click', onGetStats);
 };
 module.exports = {
 	addHandlers,

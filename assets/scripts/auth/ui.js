@@ -110,6 +110,14 @@ const onChangePasswordSuccess = function() {
   beginPlay = false;
 };
 
+const onGetStatusSuccess = function() {
+  console.log('successfully got stats');
+};
+
+const onGetStatusFail = function() {
+  console.log('was not successful getting stats');
+};
+
 /////////////////////////
 //////////////////////////FAILURES
 /////////////////////////
@@ -180,4 +188,6 @@ module.exports = {
   onSignInFailure,
   onSignOutFailure,
   onSignUpFailure,
+  onGetStatusSuccess,
+  onGetStatusFail,
 };
