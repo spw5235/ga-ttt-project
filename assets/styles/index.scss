@@ -44,10 +44,10 @@ h3 {
 h1 {
   font-size: 30px;
   font-family: 'Permanent Marker', cursive;
-  margin-top: 5px;
+  margin-top: 10px;
   clear: both;
   color: blue;
-  text-align:center;
+  text-align: center;
 }
 
 ///////////////////////////////////////////////////////////////
@@ -59,14 +59,46 @@ h1 {
 ///////////////////////////////////////////////////////////////
 
 .form {
-  margin-top: 30px;
+  margin-top: 20px;
   display: inline-block;
   text-align: center;
   font-size: 16px;
   clear: both;
 }
 
-#sign-up, #sign-in, #sign-out, #change-password {
+.field-description {
+  color: green;
+  padding: 0;
+  margin: 3px 0;
+  text-decoration: underline;
+}
+
+input[type=text], input[type=password]{
+  border: 2px solid green;
+  width: 175px;
+}
+
+input[type=submit] {
+  border: 2px solid black;
+  padding:5px;
+  color: white;
+  background: green;
+  margin-top:5px;
+};
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  padding-left: 3px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  padding-left: 3px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  padding-left: 3px;
+}
+:-moz-placeholder { /* Firefox 18- */padding-left: 3px;
+}
+
+#sign-up, #sign-in, #sign-out, #change-password, #post-change-warning {
   display: none;
 }
 
@@ -95,7 +127,7 @@ h1 {
   display:none;
 }
 
-.login-button-container {
+.login-button-container, .new-game-container {
   margin: 15px auto;
   text-align: center;
 }
@@ -103,6 +135,17 @@ h1 {
 .login-button-container img {
   max-width: 100px;
   padding-top:5px;
+}
+
+.new-game-container img {
+  max-width: 100px;
+  padding-top:5px;
+}
+
+.new-game-container img:hover {
+  -moz-box-shadow: 0 0 10px black;
+  -webkit-box-shadow: 0 0 10px black;
+  box-shadow: 0 0 10px black;
 }
 
 .login-button-container img:hover {
@@ -129,7 +172,13 @@ h1 {
   color: red;
 }
 
-#start-game-warning {
+legend {
+  color:blue;
+  font-family: 'Permanent Marker', cursive;
+  margin-bottom:10px;
+}
+
+#start-game-warning, #post-change-warning, #change-password-error {
   color: red;
   font-size: 18px;
   font-family: 'Permanent Marker', cursive;
@@ -146,26 +195,26 @@ h1 {
   width: 150px;
 }
 
-#change-password-b, #sign-out-b {
+#change-password-b, #sign-out-b, #change-password-error {
   display:none;
 }
 
-#new-game-b, #new-game-b-dummy {
-  max-width:150px;
-  font-size: 16px;
-  background: #0099ff;
-  color: #ffffff;
-  background-image: -webkit-linear-gradient(top, #0099ff, #315e7a);
-  background-image: -moz-linear-gradient(top, #0099ff, #315e7a);
-  background-image: -ms-linear-gradient(top, #0099ff, #315e7a);
-  background-image: -o-linear-gradient(top, #0099ff, #315e7a);
-  background-image: linear-gradient(to bottom, #0099ff, #315e7a);
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  text-shadow: 1px 0px 0px #471247;
-  font-family: Arial;
-}
+// #new-game-b, #new-game-b-dummy {
+//   max-width:150px;
+//   font-size: 16px;
+//   background: #0099ff;
+//   color: #ffffff;
+//   background-image: -webkit-linear-gradient(top, #0099ff, #315e7a);
+//   background-image: -moz-linear-gradient(top, #0099ff, #315e7a);
+//   background-image: -ms-linear-gradient(top, #0099ff, #315e7a);
+//   background-image: -o-linear-gradient(top, #0099ff, #315e7a);
+//   background-image: linear-gradient(to bottom, #0099ff, #315e7a);
+//   -webkit-border-radius: 28;
+//   -moz-border-radius: 28;
+//   border-radius: 28px;
+//   text-shadow: 1px 0px 0px #471247;
+//   font-family: Arial;
+// }
 
 //////////////////////////////////////////////////////
 ///////////////////// Game box ///////////////////////

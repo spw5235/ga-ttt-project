@@ -141,7 +141,9 @@ const onGameInitiated = function(event) {
   $(".player-turn").css('color', 'purple');
   if (validMove) {
     $('#new-game-b').show();
-    $('#new-game-b').text('Reset Game');
+    $('#new-game-b').attr('src', '/assets/img/blue-reset-game.jpg');
+
+    // $('#new-game-b').text('Reset Game');
     board.removeText(".player-message");
 		board.symbolValue(currPlayer, divClassNum, gameBoard, tempSymbol, playerX);
 		$(event.target).text(currPlayer);

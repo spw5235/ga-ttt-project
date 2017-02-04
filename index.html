@@ -24,6 +24,8 @@
     <p id="sign-up-success" class="password-warning">You have successfully signed up. Please login to start playing</p>
     <p id="sign-in-success" class="password-warning">You have successfully signed in.</p>
     <p id="start-game-warning">Alert: Please sign-up or sign-in to start playing</p>
+    <p id="post-change-warning">Alert: Your password has been changed. For security purposes, you have been signed-out. Please sign-in to continue playing</p>
+    <p id="change-password-error">Error changing password.  Please try again.</p>
     <!-- <img src="./assets/img/sign-up-red.png" class="login-button" id="sign-up-b">
     <img src="./assets/img/sign-in-red.jpg" class="login-button" id="login-b">
     <img src="./assets/img/change-password-red.jpg" class="login-button" id="change-password-b">
@@ -38,19 +40,26 @@
 		<fieldset>
 			<legend>Sign up!</legend>
 			<p id="sign-up-warning" class="password-warning">Error. Please Try Again.</p>
+      <p class="field-description">Email</p>
 			<input name="credentials[email]" placeholder="email" type="text" value="">
+      <p class="field-description">Password</p>
 			<input name="credentials[password]" placeholder="password" type="password" value="">
+      <p class="field-description">Confirm Password</p>
 			<input name="credentials[password_confirmation]" placeholder="password confirmation" type="password" value="">
-			<input name="submit" type="submit" value="Sign up!">
+      <br>
+      <input name="submit" type="submit" value="Sign up!">
 		</fieldset>
 	</form>
 	<form class="form" id="sign-in" name="sign-in">
 		<fieldset>
 			<legend>Sign in!</legend>
 			<p id="sign-in-warning" class="password-warning">Error. Please Try Again.</p>
+      <p class="field-description">Email</p>
 			<input name="credentials[email]" placeholder="email" type="text" value="">
+      <p class="field-description">Password</p>
 			<input name="credentials[password]" placeholder="password" type="password" value="">
-			<input name="submit" type="submit" value="Sign in!">
+      <br>
+      <input name="submit" type="submit" value="Sign in!">
 		</fieldset>
 	</form>
 	<form class="form" id="sign-out" name="sign-out">
@@ -64,8 +73,11 @@
 			<legend>Change Password</legend>
 			<!-- <p id="change-password-warning" class="password-warning">Error. Please Try Again.</p> -->
       <!-- <input name="credentials[email]" placeholder="email" type="text" value=""> -->
+      <p class="field-description">Old Password</p>
       <input name="passwords[old]" placeholder="Old Password" type="password">
+      <p class="field-description">New Password</p>
       <input name="passwords[new]" placeholder="New Password" type="password">
+      <br>
       <input name="submit" type="submit" value="Change Password">
 		</fieldset>
 	</form>
@@ -103,7 +115,8 @@
               <button id="reset-game">Reset Board</button>
           </div> -->
 		<div class="new-game-container" id="new-game">
-			<button id="new-game-b" type="button">New Game</button>
+      <img src="/assets/img/blue-start-new-game.jpg" class="login-button" id="new-game-b">
+			<!-- <button id="new-game-b" type="button">New Game</button> -->
 		</div>
 		<div class="new-game-container" id="new-game-dummy">
 			<button id="new-game-b-dummy" type="button">New Game</button>

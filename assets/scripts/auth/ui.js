@@ -21,6 +21,7 @@ const hideAllWarnings = function() {
   $("#sign-in-success").hide();
   $("#sign-out-success").hide();
   $("#sign-out-success").hide();
+  $("#change-password-error").hide();
 };
 
 /////////////////////////
@@ -30,7 +31,8 @@ const hideAllWarnings = function() {
 const signInSuccess = function() {
   console.log('sign in success');
   hideAllWarnings();
-  $('#new-game-b').text('Start New Game');
+  $('#new-game-b').attr('src', '/assets/img/blue-start-new-game.jpg');
+  // $('#new-game-b').text('Start New Game');
   $('#change-password-b').show();
   $('#new-game').show();
   $('#new-game-b').show();
@@ -45,11 +47,12 @@ const signInSuccess = function() {
   $("#start-game-warning").hide();
   $(".player-message").text('Click "Start New Game" to play!');
   $(".player-turn").text('');
+  $('#post-change-warning').hide();
 };
 
 const signOutSuccess = function() {
   hideAllWarnings();
-  $('.dummy-game-board-container').show();
+  $('.dummy-game-board-container').hide();
   $('#sign-out-b').hide();
   $('.player-turn').text('Alert: Please sign-up or sign-in to start playing');
   $('.player-message').text('');
@@ -62,7 +65,9 @@ const signOutSuccess = function() {
   $('#change-password-b').hide();
   $('#sign-out-success').show();
   $('#sign-in-success').hide();
+  $("#change-password-error").hide();
   beginPlay = false;
+
 };
 
 const onNewGameSuccess = function() {
@@ -79,16 +84,17 @@ const onNewGameSuccess = function() {
 const signUpSuccess = function() {
   hideAllWarnings();
   $(".player-turn").text("");
-  $(".player-message").text("Alert: You have successfully signed up. Please login before starting the game");
   $(".player-message").css("color", "yello");
   $("#sign-up").slideUp();
   $("#sign-in").slideDown();
   $("#sign-up-success").show();
+  $('#post-change-warning').hide();
 };
 
 const onChangePasswordSuccess = function() {
   hideAllWarnings();
-  $('player-message').css('color', 'green')
+  $('.player-message').css('color', 'green');
+  $('#sign-in-success').hide();
   $('#new-game').hide();
   $("#login-b").show();
   $("#sign-up-b").show();
@@ -98,6 +104,9 @@ const onChangePasswordSuccess = function() {
   $(".player-turn").text("");
   $(".score").text("");
   $('#change-password-b').hide();
+  $('#post-change-warning').show();
+  $('#sign-out-b').hide();
+  $("#change-password-error").hide();
   beginPlay = false;
 };
 
@@ -106,7 +115,7 @@ const onChangePasswordSuccess = function() {
 /////////////////////////
 
 const onChangePasswordFailure = function() {
-  $("#change-password-warning").show();
+  $("#change-password-error").show();
 };
 
 const onSignInFailure = function() {
@@ -119,7 +128,7 @@ const onSignOutFailure = function() {
 
 const onSignUpFailure = function() {
   $("#sign-up-warning").show();
-}
+};
 
 /////////////////////////
 //////////////////////////OTHER
