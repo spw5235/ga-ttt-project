@@ -22,8 +22,8 @@ const signIn = function(data){
 
 const signOut = function(){
   return $.ajax({
-    method: 'DELETE',
     url: config.apiOrigin + '/sign-out/' + store.user.id,
+    method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token,
     },
@@ -32,14 +32,15 @@ const signOut = function(){
 
 const changePassword = function(data){
   return $.ajax({
-    method: 'PATCH',
     url: config.apiOrigin + '/change-password/' + store.user.id,
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token,
     },
     data: data,
   });
 };
+
 
 const newGame = function() {
   return $.ajax({

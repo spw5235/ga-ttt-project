@@ -107,7 +107,7 @@ const onChangePasswordSuccess = function() {
 
 const onChangePasswordFailure = function() {
   $("#change-password-warning").show();
-}
+};
 
 const onSignInFailure = function() {
   $("#sign-in-warning").show();
