@@ -31,7 +31,7 @@ const hideAllWarnings = function() {
 const signInSuccess = function() {
   console.log('sign in success');
   hideAllWarnings();
-  $('#new-game-b').attr('src', '/assets/img/blue-start-new-game.jpg');
+  $('#new-game-b').attr('src', 'https://cloud.githubusercontent.com/assets/13546265/22615762/e355bc14-ea69-11e6-8ba1-12d3c3519aae.jpg');
   // $('#new-game-b').text('Start New Game');
   $('#change-password-b').show();
   $('#new-game').show();
