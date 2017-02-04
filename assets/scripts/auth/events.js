@@ -141,7 +141,7 @@ const onGameInitiated = function(event) {
   $(".player-turn").css('color', 'purple');
   if (validMove) {
     $('#new-game-b').show();
-    $('#new-game-b').attr('src', 'https://cloud.githubusercontent.com/assets/13546265/22615753/e34733d8-ea69-11e6-8df7-572f0034698a.jpg');
+    $('#new-game-b').attr('src', 'https://cloud.githubusercontent.com/assets/13546265/22615755/e34b53d2-ea69-11e6-8acb-df17cd32ad0e.png');
 
     // $('#new-game-b').text('Reset Game');
     board.removeText(".player-message");
