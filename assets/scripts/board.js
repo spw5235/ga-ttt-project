@@ -276,6 +276,7 @@ const newGameDummyButton = function() {
   $('.player-turn').text('');
   $('.player-message').css('color', 'red');
   $('.player-message').text('Alert: Before Starting the Game, you must sign-up and/or sign-in to your account.');
+  $('.dummy-game-board-container').hide();
 };
 
 

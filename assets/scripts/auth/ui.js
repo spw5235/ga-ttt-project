@@ -29,6 +29,7 @@ const hideAllWarnings = function() {
 /////////////////////////
 
 const signInSuccess = function() {
+  $('.message-container').show();
   console.log('sign in success');
   hideAllWarnings();
   $('#new-game-b').attr('src', 'https://cloud.githubusercontent.com/assets/13546265/22615762/e355bc14-ea69-11e6-8ba1-12d3c3519aae.jpg');
@@ -50,10 +51,12 @@ const signInSuccess = function() {
   $(".player-message").text('Click "Start New Game" to play!');
   $(".player-turn").text('');
   $('#post-change-warning').hide();
+  $("#stats-button").show();
 };
 
 const signOutSuccess = function() {
   hideAllWarnings();
+  $('.message-container').hide();
   $('.stats-desc').hide();
   $(".status-button-container").hide();
   $(".stats-container").hide();
@@ -71,12 +74,14 @@ const signOutSuccess = function() {
   $('#sign-out-success').show();
   $('#sign-in-success').hide();
   $("#change-password-error").hide();
+  $("#stats-button-hide").hide();
   beginPlay = false;
 
 };
 
 const onNewGameSuccess = function() {
   hideAllWarnings();
+  $('.message-container').show();
   $('#new-game-b').hide();
   $(".player-message").text("");
   $('.player-turn').text("Player 1, it's your turn");
@@ -88,7 +93,12 @@ const onNewGameSuccess = function() {
 
 const signUpSuccess = function() {
   hideAllWarnings();
+  $('.message-container').hide();
   $(".player-turn").text("");
+  $('.dummy-game-board-container').hide();
+  $(".game-board-container").hide();
+  $(".player-message").text("");
+  $("#stats-button").show();
   $(".player-message").css("color", "yello");
   $("#sign-up").slideUp();
   $("#sign-in").slideDown();
@@ -135,6 +145,8 @@ const onChangePasswordSuccess = function() {
   $('#post-change-warning').show();
   $('#sign-out-b').hide();
   $("#change-password-error").hide();
+  $("#stats-button-hide").hide();
+  $(".message-container").hide();
   beginPlay = false;
 };
 

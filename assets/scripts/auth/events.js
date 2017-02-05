@@ -365,6 +365,10 @@ const onGameInitiated = function(event) {
 
         board.removeText(".player-turn");
 
+        $("#stats-button-hide").hide();
+        $(".stats-container").slideUp();
+        $("#stats-button").show();
+        $(".score").text("");
 				$(".player-message").text("Player " + currPlayNum + " has won the game");
 			} else if (board.isBoardFilled(gameBoard)) {
 
@@ -375,6 +379,10 @@ const onGameInitiated = function(event) {
 
 
         board.removeText(".player-turn");
+        $("#stats-button-hide").hide();
+        $(".stats-container").slideUp();
+        $("#stats-button").show();
+        $(".score").text("");
 				$(".player-message").text("The game has ended in a draw");
 			}
       console.log(onGetGame());
@@ -382,6 +390,7 @@ const onGameInitiated = function(event) {
 			isGameOver = true;
       $('#new-game-b').show();
       $('#new-game-b').text('Start New Game');
+      $("#new-game-b").attr('src', 'https://cloud.githubusercontent.com/assets/13546265/22615762/e355bc14-ea69-11e6-8ba1-12d3c3519aae.jpg');
 
 		} else {
 
