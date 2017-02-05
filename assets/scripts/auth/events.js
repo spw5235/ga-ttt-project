@@ -14,21 +14,24 @@ let nextPlayer;
 let currPlayNum;
 let isGameOver = false;
 
-const postStats = function() {
-  console.log('fille');
+// const postStats = function() {
+//   console.log('fille');
+// };
+
+const sortStatsFunction = function (a,b) {
+    return a - b;
 };
 
 const calcWinnerStats = function(arr) {
+  // console.log('calc winner stats arr');
+  // console.log(arr);
   let tempArrayX = [];
   let tempArrayY = [];
-  let win = [];
-  let loss = [];
-  let tie = [];
 
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === "x") {
+    if (arr[i] === "x" || arr[i] === "X") {
       tempArrayX.push(i);
-    } else if (arr[i] === "o") {
+    } else if (arr[i] === "o" || arr[i] === "O") {
       tempArrayY.push(i);
     }
   }
@@ -69,11 +72,16 @@ const calcWinnerStats = function(arr) {
   combineArr.push(winSevenB);
 
 
-  tempArrayX = tempArrayX.sort(sortFunction);
+  tempArrayX = tempArrayX.sort(sortStatsFunction);
   tempArrayX = tempArrayX.join(",");
 
-  tempArrayY = tempArrayY.sort(sortFunction);
+  tempArrayY = tempArrayY.sort(sortStatsFunction);
   tempArrayY = tempArrayY.join(",");
+
+  // console.log("tempArrayX");
+  // console.log(tempArrayX);
+  // console.log("tempArrayY");
+  // console.log(tempArrayY);
 
   for (let i = 0; i < combineArr.length; i++) {
   	let zeroTrue = false;
@@ -101,7 +109,7 @@ const calcWinnerStats = function(arr) {
 
     if ( zeroTrue && oneTrue && twoTrue) {
       thisGameOver = true;
-      win.push('x');
+      return 1;
     } else {
         zeroTrue = false;
         oneTrue = false;
@@ -135,7 +143,7 @@ const calcWinnerStats = function(arr) {
     }
 
     if ( zeroTrue && oneTrue && twoTrue) {
-      loss.push('o');
+      return 2;
     } else {
         zeroTrue = false;
         oneTrue = false;
@@ -143,113 +151,67 @@ const calcWinnerStats = function(arr) {
         thisGameOver = false;
     }
   }
-
-let winsLength = wins.length;
-let lossLength = loss.length;
-let winsPlusLosses = winsLength + lossLength;
-let ties = count - winsPlusLosses;
-
-winsLength = winsLength.toString();
-lossLength = lossLength.toString();
-ties = ties.toString();
-
-$("#wins").text(winsLength);
-$("#losses").text(lossLength);
-$('#ties').text(ties);
-
-
-
-};
-
-const whoWon = function(tempArrayXS, tempArrayYS) {
-  if (tempArrayXS > tempArrayYS) {
-    return 'x';
-  } else {
-    return 'o';
-  }
+  return 0;
 };
 
 const onGetStats = function() {
   api.getStats()
     .then((response) => {
-      // console.log('received');
-      // console.log(response.games);
-      // console.log(response.games.length);
-      // console.log(response.games[0].over === true);
       let win = [];
-      let lossGame = [];
+      let loss = [];
       let tie = [];
-      let count = 0;
       for (let i = 0; i < response.games.length; i++) {
+        // console.log('all games');
+        // console.log(response.games[i]);
         if ( response.games[i].over === true ) {
-          let cellsArr = response.games[i].cells;
-          count += 1;
+          let tempObj = [];
 
-          let tempO = [];
-          let tempX = [];
+          tempObj.push(response.games[i].cells);
+          // console.log('tempObj');
+          // console.log(tempObj);
+          let lastGame = tempObj[tempObj.length - 1];
+          let winnerofGame = calcWinnerStats(lastGame);
 
-          for (let j = 0; j < cellsArr.length; j++) {
-            if ( cellsArr[j] === "O" || cellsArr[j] === "o" ) {
-              tempO.push(cellsArr[j]);
-            } else if ( cellsArr[j] === "X" || cellsArr[j] === "x" ) {
-              tempX.push(cellsArr[j]);
-            }
-          }
-
-          let oLength = tempO.length;
-          let xLength = tempX.length;
-          console.log(response.games[i].id);
-          console.log('templengthx');
-          console.log(xLength);
-          console.log('templengtho');
-          console.log(oLength);
-
-          if (oLength > xLength) {
-            console.log('lost counted');
-            lossGame.push('o');
-          } else if ( oLength < xLength ) {
+          if (winnerofGame === 1) {
             win.push('x');
-          } else {
-            tie.push('t');
+            // $("#player-one-winner").show();
+          } else if (winnerofGame === 2) {
+            loss.push('o');
+            // $("#player-two-winner").show();
           }
-
-          tempO = [];
-          tempX = [];
-
-            //
-            // console.log('game starts here');
-            // console.log('o');
-            // console.log(tempO);
-            // console.log('x');
-            // console.log(tempX);
-            // console.log('game ends here');
+          else {
+            tie.push('t');
+            // $("#player-tie").show();
           }
         }
-        console.log('win');
-        console.log(win);
-        console.log('loss');
-        console.log(lossGame);
-        console.log('tie');
-        console.log(tie);
-      })
-      .done(ui.signOutSuccess)
-      .fail(ui.onSignOutFailure);
-    };
+      }
+      let winRecord = win.length;
+      let lossRecord = loss.length;
+      let tieRecord = tie.length;
 
+      winRecord = winRecord.toString();
+      lossRecord = lossRecord.toString();
+      tieRecord = tieRecord.toString();
 
-//
-//       for (let i = 0; i < response.games.length; i++) {
-//         if ( response.games[i].over === true ) {
-//           gameCount = gameCount + 1;
-//         }
-//       }
-//       store.finalGameCount = gameCount;
-//       $(".score").text("Number of Games Completed: " + store.finalGameCount);
-//     })
-//     .then(ui.getGameSuccess)
-//     .catch(ui.getGameFailure);
-//   };
-// }
+      console.log('winrecord');
+      console.log(winRecord);
+      console.log('lossrecord');
+      console.log(lossRecord);
+      console.log('tierecord');
+      console.log(tieRecord);
+
+      $("#player-one-winner").text(winRecord);
+      $("#player-two-winner").text(lossRecord);
+      $("#player-tie").text(tieRecord);
+
+      $("#player-one-winner").show();
+      $("#player-two-winner").show();
+      $("#player-tie").show();
+
+    })
+    .done(ui.signOutSuccess)
+    .fail(ui.onSignOutFailure);
+  };
 
 const getPlayerRecord = function() {
   let gameCount = 0;

@@ -81,15 +81,26 @@
 		</fieldset>
 	</form>
 	<h1 class="tic-heading">Tic-Tac-Toe</h1>
+  <div class="stats-desc">Click to View Your Win Record</div>
   <div class="stats-container">
-    <div class="stats-desc">Click to View Your Win Record</div>
-    <div class="stats-response">Wins:
-      <span id="wins"></span>, Losses :
-      <span id="losses"></span>, Ties:
-      <span id="ties"></span>.
+    <div class="stats-response">Your win/loss/tie record for completed games is:
+      <p class="score-display">
+      Wins:
+      <span id="player-one-winner"></span>
+    </p>
+    <p class="score-display">
+      Losses:
+      <span id="player-two-winner"></span>
+    </p>
+    <p class="score-display">
+      Ties:
+      <span id="player-tie"></span>
+    </p>
     </div>
-    <button id="stats-button">Click For Stats</button>
   </div>
+  <div class="status-button-container">
+  <button id="stats-button">Click For Stats</button>
+</div>
 	<div class="game-play">"
     <div class="message-container">
 			<h3>Message Board</h3>

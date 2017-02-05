@@ -33,6 +33,8 @@ const signInSuccess = function() {
   hideAllWarnings();
   $('#new-game-b').attr('src', 'https://cloud.githubusercontent.com/assets/13546265/22615762/e355bc14-ea69-11e6-8ba1-12d3c3519aae.jpg');
   // $('#new-game-b').text('Start New Game');
+  $('.stats-desc').show();
+  $(".status-button-container").show();
   $('#change-password-b').show();
   $('#new-game').show();
   $('#new-game-b').show();
@@ -52,6 +54,9 @@ const signInSuccess = function() {
 
 const signOutSuccess = function() {
   hideAllWarnings();
+  $('.stats-desc').hide();
+  $(".status-button-container").hide();
+  $(".stats-container").hide();
   $('.dummy-game-board-container').hide();
   $('#sign-out-b').hide();
   $('.player-turn').text('Alert: Please sign-up or sign-in to start playing');
@@ -93,6 +98,9 @@ const signUpSuccess = function() {
 
 const onChangePasswordSuccess = function() {
   hideAllWarnings();
+  $('.stats-desc').hide();
+  $(".status-button-container").hide();
+  $(".stats-container").hide();
   $('.player-message').css('color', 'green');
   $('#sign-in-success').hide();
   $('#new-game').hide();
