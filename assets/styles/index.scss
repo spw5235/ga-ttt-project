@@ -65,7 +65,8 @@ body {
   background: blue;
   color: white;
   margin: 0 auto;
-  text-align:center;
+  text-align: center;
+  cursor: pointer;
 }
 
 h3 {
@@ -155,6 +156,7 @@ input[type=submit] {
 
 #new-game-b {
   display:none;
+  cursor: pointer;
 }
 
 #new-game-b-dummy {
@@ -180,12 +182,14 @@ input[type=submit] {
   -moz-box-shadow: 0 0 10px black;
   -webkit-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
+  cursor: pointer;
 }
 
 .login-button-container img:hover {
   -moz-box-shadow: 0 0 10px black;
   -webkit-box-shadow: 0 0 10px black;
   box-shadow: 0 0 10px black;
+  cursor: pointer;
 }
 
 #login-status {
@@ -334,12 +338,10 @@ legend {
 
 @media screen and (max-width: 500px) {
   .wrap-background-image {
-    margin: 0 5%;
-    margin-top: 10px;
+    margin: 10px 5%;
   }
 
   .game-play {
-    background-color:white;
     padding-left: 10px;
     padding-right: 10px;
   }
