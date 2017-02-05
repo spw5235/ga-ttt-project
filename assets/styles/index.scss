@@ -46,8 +46,14 @@ body {
 
 .stats-desc {
   color: blue;
+  font-size: 18px;
   text-align: center;
   display: none;
+  text-decoration: underline;
+}
+
+.stats-response {
+  font-size: 16px;
 }
 
 .status-button-container {
@@ -72,7 +78,7 @@ h3 {
 h1 {
   font-size: 30px;
   font-family: 'Permanent Marker', cursive;
-  margin-top: 10px;
+  margin-top: 20px;
   clear: both;
   color: blue;
   text-align: center;

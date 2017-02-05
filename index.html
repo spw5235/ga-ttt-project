@@ -14,6 +14,7 @@
 
 <body class="container-fluid">
     <div class = "wrap-background-image">
+      	<h1 class="tic-heading">Tic-Tac-Toe</h1>
 	<div class="login-button-container">
     <img src="https://cloud.githubusercontent.com/assets/13546265/22615759/e352e8a4-ea69-11e6-9455-cc1e260f9883.jpg" alt="Sign-Up" class="login-button" id="sign-up-b">
     <img src="https://cloud.githubusercontent.com/assets/13546265/22615756/e34bdc4e-ea69-11e6-9f01-b6fc73c6092c.jpg" alt="Sign-In" class="login-button" id="login-b">
@@ -26,14 +27,6 @@
     <p id="start-game-warning">Alert: Please sign-up or sign-in to start playing</p>
     <p id="post-change-warning">Alert: Your password has been changed. For security purposes, you have been signed-out. Please sign-in to continue playing</p>
     <p id="change-password-error">Error changing password.  Please try again.</p>
-    <!-- <img src="./assets/img/sign-up-red.png" class="login-button" id="sign-up-b">
-    <img src="./assets/img/sign-in-red.jpg" class="login-button" id="login-b">
-    <img src="./assets/img/change-password-red.jpg" class="login-button" id="change-password-b">
-    <img src="./assets/img/sign-out-red.jpg" class="login-button" id="sign-out-b"> -->
-		<!-- <button class="login-button" id="sign-up-b" type="button">Sign Up!</button> -->
-    <!-- <button class="login-button" id="login-b" type="button">Sign in!</button> -->
-    <!-- <button class="login-button" id="change-password-b" type="button">Change Password</button> -->
-    <!-- <button class="login-button" id="sign-out-b" type="button">Sign Out</button> -->
 	</div>
 	<form class="form" id="sign-up" name="sign-up">
 		<fieldset>
@@ -70,8 +63,6 @@
 	<form id="change-password" class="form" name="change-password">
 		<fieldset>
 			<legend>Change Password</legend>
-			<!-- <p id="change-password-warning" class="password-warning">Error. Please Try Again.</p> -->
-      <!-- <input name="credentials[email]" placeholder="email" type="text" value=""> -->
       <p class="field-description">Old Password</p>
       <input name="passwords[old]" placeholder="Old Password" type="password">
       <p class="field-description">New Password</p>
@@ -80,8 +71,7 @@
       <input name="submit" type="submit" value="Change Password">
 		</fieldset>
 	</form>
-	<h1 class="tic-heading">Tic-Tac-Toe</h1>
-  <div class="stats-desc">Click to View Your Win Record</div>
+  <div class="stats-desc">Click Button Below to View Your Win Record</div>
   <div class="stats-container">
     <div class="stats-response">Your win/loss/tie record for completed games is:
       <p class="score-display">
