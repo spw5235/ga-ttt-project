@@ -14,27 +14,177 @@ let nextPlayer;
 let currPlayNum;
 let isGameOver = false;
 
+const postStats = function() {
+  console.log('fille');
+};
+
+const calcWinnerStats = function(arr) {
+  let tempArrayX = [];
+  let tempArrayY = [];
+  let win = [];
+  let loss = [];
+  let tie = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "x") {
+      tempArrayX.push(i);
+    } else if (arr[i] === "o") {
+      tempArrayY.push(i);
+    }
+  }
+
+  let winOne = [0, 1, 2];
+
+  let winThree = [3, 4, 5];
+
+  let winFive = [6, 7, 8];
+
+  let winSeven = [0, 3, 6];
+
+  let winOneB = [1, 4, 7];
+
+  let winThreeB = [2, 5, 8];
+
+  let winFiveB = [0, 4, 8];
+
+  let winSevenB = [2, 4, 6];
+
+  let combineArr = [];
+
+  combineArr.push(winOne);
+
+  combineArr.push(winThree);
+
+  combineArr.push(winFive);
+
+  combineArr.push(winSeven);
+
+
+  combineArr.push(winOneB);
+
+  combineArr.push(winThreeB);
+
+  combineArr.push(winFiveB);
+
+  combineArr.push(winSevenB);
+
+
+  tempArrayX = tempArrayX.sort(sortFunction);
+  tempArrayX = tempArrayX.join(",");
+
+  tempArrayY = tempArrayY.sort(sortFunction);
+  tempArrayY = tempArrayY.join(",");
+
+  for (let i = 0; i < combineArr.length; i++) {
+  	let zeroTrue = false;
+    let oneTrue = false;
+    let twoTrue = false;
+    let thisGameOver = false;
+  	let valueZero = combineArr[i][0].toString();
+    let valueOne = combineArr[i][1].toString();
+    let valueTwo = combineArr[i][2].toString();
+
+  	for (let j = 0; j < tempArrayX.length; j++) {
+    	if (tempArrayX[j] === valueZero) {
+      	zeroTrue = true;
+        //console.log('if conditional - valueZero');
+        //console.log(zeroTrue)
+      } else if (tempArrayX[j] === valueOne) {
+      	oneTrue = true;
+        //console.log('if conditional - valone')
+        //console.log(oneTrue)
+      } else if (tempArrayX[j] === valueTwo) {
+      	//console.log('if conditional - valTwo')
+      	twoTrue = true;
+      }
+    }
+
+    if ( zeroTrue && oneTrue && twoTrue) {
+      thisGameOver = true;
+      win.push('x');
+    } else {
+        zeroTrue = false;
+        oneTrue = false;
+        twoTrue = false;
+        thisGameOver = false;
+    }
+  }
+
+  for (let i = 0; i < combineArr.length; i++) {
+  	let zeroTrue = false;
+    let oneTrue = false;
+    let twoTrue = false;
+    let thisGameOver = false;
+  	let valueZero = combineArr[i][0].toString();
+    let valueOne = combineArr[i][1].toString();
+    let valueTwo = combineArr[i][2].toString();
+
+  	for (let j = 0; j < tempArrayY.length; j++) {
+    	if (tempArrayY[j] === valueZero) {
+      	zeroTrue = true;
+        //console.log('if conditional - valueZero');
+        //console.log(zeroTrue)
+      } else if (tempArrayY[j] === valueOne) {
+      	oneTrue = true;
+        //console.log('if conditional - valone')
+        //console.log(oneTrue)
+      } else if (tempArrayY[j] === valueTwo) {
+      	//console.log('if conditional - valTwo')
+      	twoTrue = true;
+      }
+    }
+
+    if ( zeroTrue && oneTrue && twoTrue) {
+      loss.push('o');
+    } else {
+        zeroTrue = false;
+        oneTrue = false;
+        twoTrue = false;
+        thisGameOver = false;
+    }
+  }
+
+let winsLength = wins.length;
+let lossLength = loss.length;
+let winsPlusLosses = winsLength + lossLength;
+let ties = count - winsPlusLosses;
+
+winsLength = winsLength.toString();
+lossLength = lossLength.toString();
+ties = ties.toString();
+
+$("#wins").text(winsLength);
+$("#losses").text(lossLength);
+$('#ties').text(ties);
+
+
+
+};
+
+const whoWon = function(tempArrayXS, tempArrayYS) {
+  if (tempArrayXS > tempArrayYS) {
+    return 'x';
+  } else {
+    return 'o';
+  }
+};
+
 const onGetStats = function() {
   api.getStats()
     .then((response) => {
-      console.log('response.games[1].cells[1]');
-      console.log(response.games[1].cells[1]);
-      let test = response.games[1].cells[1];
-      if (test === "X") {
-        console.log('X appears');
-      }
       // console.log('received');
       // console.log(response.games);
       // console.log(response.games.length);
       // console.log(response.games[0].over === true);
       let win = [];
-      let loss = [];
+      let lossGame = [];
       let tie = [];
+      let count = 0;
       for (let i = 0; i < response.games.length; i++) {
         if ( response.games[i].over === true ) {
           let cellsArr = response.games[i].cells;
-          // console.log('response.games[i].cells');
-          // console.log(cellsArr);
+          count += 1;
+
           let tempO = [];
           let tempX = [];
 
@@ -46,14 +196,26 @@ const onGetStats = function() {
             }
           }
 
-            if (tempO.length > tempX.length) {
-              console.log('win');
-              loss.push('o');
-            } else if ( tempX.length > tempO.length ) {
-              win.push('x');
-            } else {
-              tie.push('t');
-            }
+          let oLength = tempO.length;
+          let xLength = tempX.length;
+          console.log(response.games[i].id);
+          console.log('templengthx');
+          console.log(xLength);
+          console.log('templengtho');
+          console.log(oLength);
+
+          if (oLength > xLength) {
+            console.log('lost counted');
+            lossGame.push('o');
+          } else if ( oLength < xLength ) {
+            win.push('x');
+          } else {
+            tie.push('t');
+          }
+
+          tempO = [];
+          tempX = [];
+
             //
             // console.log('game starts here');
             // console.log('o');
@@ -66,7 +228,9 @@ const onGetStats = function() {
         console.log('win');
         console.log(win);
         console.log('loss');
-        console.log(loss);
+        console.log(lossGame);
+        console.log('tie');
+        console.log(tie);
       })
       .done(ui.signOutSuccess)
       .fail(ui.onSignOutFailure);
@@ -139,7 +303,7 @@ const onChangePassword = function(event) {
   .fail(ui.onChangePasswordFailure);
 };
 
-const onNewGame = function(event) {x
+const onNewGame = function(event) {
   isGameOver = false;
 	event.preventDefault();
 	// $('.dummy-game-board-container').remove();

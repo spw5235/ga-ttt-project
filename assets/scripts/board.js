@@ -1,6 +1,5 @@
 'use strict';
 
-
 // Message for who's turn it is
 const nextPlayerFunc = function(currPlayer, playerX, playerO) {
   if (currPlayer === playerX) {
@@ -263,16 +262,15 @@ const showChangePassword = function() {
   $('#sign-in').hide();
   $('#sign-up').hide();
   $('#sign-out').hide();
-
   $('#change-password').toggle();
 };
 
-const showSignOut = function() {
-  $('#sign-in').hide();
-  $('#sign-up').hide();
-  $('#sign-out').toggle();
-  $('#change-password').hide();
-};
+// const showSignOut = function() {
+//   $('#sign-in').hide();
+//   $('#sign-up').hide();
+//   $('#sign-out').toggle();
+//   $('#change-password').hide();
+// };
 
 const newGameDummyButton = function() {
   $('.player-turn').text('');
@@ -286,8 +284,6 @@ $('.dummy-game-board-container').on('click', newGameDummyButton);
 $('#login-b').on('click', showLogin);
 $('#sign-up-b').on('click', showSignUp);
 $('#change-password-b').on('click', showChangePassword);
-$('#sign-up-b').on('sign-out-b', showSignOut);
-
 
 
 module.exports = {
