@@ -87,7 +87,7 @@ const calcWinnerStats = function(arr) {
   	let zeroTrue = false;
     let oneTrue = false;
     let twoTrue = false;
-    let thisGameOver = false;
+    let thisGameOverStats = false;
   	let valueZero = combineArr[i][0].toString();
     let valueOne = combineArr[i][1].toString();
     let valueTwo = combineArr[i][2].toString();
@@ -108,13 +108,13 @@ const calcWinnerStats = function(arr) {
     }
 
     if ( zeroTrue && oneTrue && twoTrue) {
-      thisGameOver = true;
+      thisGameOverStats = true;
       return 1;
     } else {
         zeroTrue = false;
         oneTrue = false;
         twoTrue = false;
-        thisGameOver = false;
+        thisGameOverStats = false;
     }
   }
 
@@ -122,7 +122,7 @@ const calcWinnerStats = function(arr) {
   	let zeroTrue = false;
     let oneTrue = false;
     let twoTrue = false;
-    let thisGameOver = false;
+    let thisGameOverStats = false;
   	let valueZero = combineArr[i][0].toString();
     let valueOne = combineArr[i][1].toString();
     let valueTwo = combineArr[i][2].toString();
@@ -148,7 +148,7 @@ const calcWinnerStats = function(arr) {
         zeroTrue = false;
         oneTrue = false;
         twoTrue = false;
-        thisGameOver = false;
+        thisGameOverStats = false;
     }
   }
   return 0;
@@ -204,13 +204,21 @@ const onGetStats = function() {
       $("#player-two-winner").text(lossRecord);
       $("#player-tie").text(tieRecord);
 
+      $( ".stats-container" ).slideDown();
+      // $(".stats-container").show();
+      // $("#stats-button").on('click', function() {
+      //   $( ".stats-container" ).toggle( display );
+      // });
+      //
+      //
+      //
       $("#player-one-winner").show();
       $("#player-two-winner").show();
       $("#player-tie").show();
 
     })
-    .done(ui.signOutSuccess)
-    .fail(ui.onSignOutFailure);
+    .done(ui.onGetStatsSuccess)
+    .fail(ui.onGetStatsFail);
   };
 
 const getPlayerRecord = function() {

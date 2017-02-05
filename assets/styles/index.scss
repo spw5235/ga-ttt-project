@@ -244,6 +244,17 @@ legend {
 //   font-family: Arial;
 // }
 
+.stats-button-hide-container {
+  text-align: center;
+}
+
+#stats-button-hide {
+  display: none;
+  margin: 0 auto;
+  color: white;
+  background-color: blue;
+};
+
 //////////////////////////////////////////////////////
 ///////////////////// Game box ///////////////////////
 //////////////////////////////////////////////////////

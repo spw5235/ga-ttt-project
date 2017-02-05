@@ -96,6 +96,26 @@ const signUpSuccess = function() {
   $('#post-change-warning').hide();
 };
 
+const onGetStatsSuccess = function() {
+  console.log('statistics obtained');
+};
+
+  $("#stats-button").on('click', function() {
+    $(this).hide();
+    $("#stats-button-hide").show();
+  });
+
+  $("#stats-button-hide").on('click', function() {
+    $(this).hide();
+    $(".stats-container").slideUp();
+    $("#stats-button").show();
+  });
+
+
+const onGetStatsFail = function() {
+  console.log('statistics fail');
+};
+
 const onChangePasswordSuccess = function() {
   hideAllWarnings();
   $('.stats-desc').hide();
@@ -116,14 +136,6 @@ const onChangePasswordSuccess = function() {
   $('#sign-out-b').hide();
   $("#change-password-error").hide();
   beginPlay = false;
-};
-
-const onGetStatusSuccess = function() {
-  console.log('successfully got stats');
-};
-
-const onGetStatusFail = function() {
-  console.log('was not successful getting stats');
 };
 
 /////////////////////////
@@ -196,6 +208,6 @@ module.exports = {
   onSignInFailure,
   onSignOutFailure,
   onSignUpFailure,
-  onGetStatusSuccess,
-  onGetStatusFail,
+  onGetStatsSuccess,
+  onGetStatsFail,
 };
