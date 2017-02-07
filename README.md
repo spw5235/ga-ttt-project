@@ -4,7 +4,7 @@
 
 ## Link to Hosted Game
 
-https://github.com/spw5235/ga-ttt-project
+https://spw5235.github.io/ga-ttt-project/
 
 ## General Description
 
@@ -35,7 +35,17 @@ There are some problems with this SPA that require further attention.  For insta
 ## Wireframes
 To view the wireframe for this application, please view the following link:
 
-https://goo.gl/ggq3Fv
+Onload:
+https://goo.gl/fdQl7T
+
+Sign-in:
+https://goo.gl/eAWKRx
+
+New Game:
+https://goo.gl/cwu816
+
+Sign-out:
+https://goo.gl/3Kq4Vw
 
 ## User Stories
 
