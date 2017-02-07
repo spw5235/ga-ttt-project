@@ -4,7 +4,7 @@
 
 ## Link to Hosted Game
 
-https://github.com/spw5235/ga-ttt-project
+https://spw5235.github.io/ga-ttt-project/ 
 
 ## General Description
 
