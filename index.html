@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic-Tac-Toe</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<script charset="utf-8" defer src="public/vendor.js" type="text/javascript">
+	</script>
+	<script charset="utf-8" defer src="public/application.js" type="text/javascript">
+	</script>
+</head>
+
+<body class="container-fluid">
+    <div class = "wrap-background-image">
+      	<h1 class="tic-heading">Tic-Tac-Toe</h1>
+	<div class="login-button-container">
+    <img src="https://cloud.githubusercontent.com/assets/13546265/22615759/e352e8a4-ea69-11e6-9455-cc1e260f9883.jpg" alt="Sign-Up" class="login-button" id="sign-up-b">
+    <img src="https://cloud.githubusercontent.com/assets/13546265/22615756/e34bdc4e-ea69-11e6-9f01-b6fc73c6092c.jpg" alt="Sign-In" class="login-button" id="login-b">
+    <img src="https://cloud.githubusercontent.com/assets/13546265/22615752/e3471d6c-ea69-11e6-9f58-b9dc1e13377c.jpg" alt="Change Password" class="login-button" id="change-password-b">
+    <img src="https://cloud.githubusercontent.com/assets/13546265/22615757/e3518220-ea69-11e6-80d7-60d892c33110.jpg" alt="Sign-Out" class="login-button" id="sign-out-b">
+    <p id="sign-out-warning" class="password-warning">Error Signing Out</p>
+    <p id="sign-out-success" class="password-warning">You have successfully signed-out. Please login to start playing</p>
+    <p id="sign-up-success" class="password-warning">You have successfully signed up. Please login to start playing</p>
+    <p id="sign-in-success" class="password-warning">You have successfully signed in.</p>
+    <p id="start-game-warning">Alert: Please sign-up or sign-in to start playing</p>
+    <p id="post-change-warning">Alert: Your password has been changed. For security purposes, you have been signed-out. Please sign-in to continue playing</p>
+    <p id="change-password-error">Error changing password.  Please try again.</p>
+	</div>
+	<form class="form" id="sign-up" name="sign-up">
+		<fieldset>
+			<legend>Sign up!</legend>
+			<p id="sign-up-warning" class="password-warning">Error. Please Try Again.</p>
+      <p class="field-description">Email</p>
+			<input name="credentials[email]" placeholder="email" type="text" value="">
+      <p class="field-description">Password</p>
+			<input name="credentials[password]" placeholder="password" type="password" value="">
+      <p class="field-description">Confirm Password</p>
+			<input name="credentials[password_confirmation]" placeholder="password confirmation" type="password" value="">
+      <br>
+      <input name="submit" type="submit" value="Sign up!">
+		</fieldset>
+	</form>
+	<form class="form" id="sign-in" name="sign-in">
+		<fieldset>
+			<legend>Sign in!</legend>
+			<p id="sign-in-warning" class="password-warning">Error. Please Try Again.</p>
+      <p class="field-description">Email</p>
+			<input name="credentials[email]" placeholder="email" type="text" value="">
+      <p class="field-description">Password</p>
+			<input name="credentials[password]" placeholder="password" type="password" value="">
+      <br>
+      <input name="submit" type="submit" value="Sign in!">
+		</fieldset>
+	</form>
+	<form class="form" id="sign-out" name="sign-out">
+		<fieldset>
+			<legend>Sign out!</legend>
+      <input name="submit" type="submit" value="Sign out!">
+		</fieldset>
+	</form>
+	<form id="change-password" class="form" name="change-password">
+		<fieldset>
+			<legend>Change Password</legend>
+      <p class="field-description">Old Password</p>
+      <input name="passwords[old]" placeholder="Old Password" type="password">
+      <p class="field-description">New Password</p>
+      <input name="passwords[new]" placeholder="New Password" type="password">
+      <br>
+      <input name="submit" type="submit" value="Change Password">
+		</fieldset>
+	</form>
+  <div class="stats-desc">Click Button Below to View Your Win Record</div>
+  <div class="stats-container">
+    <div class="stats-response">Your win/loss/tie record for completed games is:
+      <p class="score-display">
+      Wins:
+      <span id="player-one-winner"></span>
+    </p>
+    <p class="score-display">
+      Losses:
+      <span id="player-two-winner"></span>
+    </p>
+    <p class="score-display">
+      Ties:
+      <span id="player-tie"></span>
+    </p>
+    </div>
+  </div>
+  <div class="status-button-container">
+  <button id="stats-button">Click For Stats</button>
+  </div>
+  <div class="stats-button-hide-container">
+    <button id="stats-button-hide">Click To Hide Stats</button>
+  </div>
+
+	<div class="game-play">"
+    <div class="message-container">
+			<h3>Message Board</h3>
+		<div class="player-message"></div>
+		<!-- <div class="temp-login-message"></div> -->
+		<div class="player-turn">Player 1, it's your turn</div>
+		<div class="score"></div>
+    </div>
+		<div class="game-board-container">
+			<div class="0cell game-box" id="0"></div>
+			<div class="1cell game-box" id="1"></div>
+			<div class="2cell game-box" id="2"></div>
+			<div class="3cell game-box" id="3"></div>
+			<div class="4cell game-box" id="4"></div>
+			<div class="5cell game-box" id="5"></div>
+			<div class="6cell game-box" id="6"></div>
+			<div class="7cell game-box" id="7"></div>
+			<div class="8cell game-box" id="8"></div>
+		</div>
+		<div class="dummy-game-board-container">
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+			<div class="game-box"></div>
+		</div><!-- <div class="reset-game-container">
+              <button id="reset-game">Reset Board</button>
+          </div> -->
+		<div class="new-game-container" id="new-game">
+      <img src="https://cloud.githubusercontent.com/assets/13546265/22615762/e355bc14-ea69-11e6-8ba1-12d3c3519aae.jpg" alt="New Game" class="login-button" id="new-game-b">
+			<!-- <button id="new-game-b" type="button">New Game</button> -->
+		</div>
+	</div>
+</div>
+</body>
+</html>
