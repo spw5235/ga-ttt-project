@@ -6,19 +6,17 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 ///////////////////////////////////////////////////////////////
 
 body {
-  // font-family: 'Permanent Marker', cursive;
   font-family: 'Indie Flower', cursive;
-  // margin-bottom:200px;
   color: #999999;
-  background:#fff;
+  background: #fff;
   font-size: 14px;
-  background-image: url("https://cloud.githubusercontent.com/assets/13546265/25192338/d5e63a28-2500-11e7-93dd-c18d9d1a1050.jpg");
-  background-position: center center;
+  background-image: url(https://cloud.githubusercontent.com/assets/13546265/25192338/d5e63a28-2500-11e7-93dd-c18d9d1a1050.jpg);
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: contain;
   background-color: #464646;
-  height: auto;
+  width: 600px;
   margin: 0 auto;
   padding: 10px;
   position: relative;
