@@ -8,7 +8,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 body {
   // font-family: 'Permanent Marker', cursive;
   font-family: 'Indie Flower', cursive;
-  margin-bottom:200px;
+  // margin-bottom:200px;
   color: #999999;
   background:#fff;
   font-size: 14px;
@@ -18,7 +18,10 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-color: #464646;
-
+  height: auto;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
 }
 
 .wrap-background-image {
